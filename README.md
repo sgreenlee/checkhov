@@ -1,8 +1,8 @@
-# FresherNote
+# Prevoir
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][prevoir] **NB:** This should be a link to your production site
 
-[heroku]: http://www.herokuapp.com
+[prevoir]: http://prevoir.herokuapp.com
 
 ## Minimum Viable Product
 
