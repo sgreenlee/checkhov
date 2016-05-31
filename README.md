@@ -1,12 +1,12 @@
-# Checkov
+# Checkhov
 
-[Heroku link][Checkov]
+[Heroku link][Checkhov]
 
-[Checkov]: http://Checkov.herokuapp.com
+[Checkhov]: http://Checkhov.herokuapp.com
 
 ## Minimum Viable Product
 
-Checkov is a web application inspired by Asana that will be built on Ruby on Rails and React.js. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+Checkhov is a web application inspired by Asana that will be built on Ruby on Rails and React.js. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [ ] New account creation, login, and guest/demo login
 - [ ] Smooth, bug-free navigation
@@ -18,7 +18,7 @@ Checkov is a web application inspired by Asana that will be built on Ruby on Rai
 
 ## Product Goals and Priorities
 
-Checkov will allow users to do the following:
+Checkhov will allow users to do the following:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
