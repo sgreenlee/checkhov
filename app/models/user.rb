@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   validates :email,
-            :first_name,
-            :last_name,
             :session_token,
             :password_digest, presence: true
 

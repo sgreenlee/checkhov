@@ -4,7 +4,7 @@
 
 // reset
 
-html, body, header, section, footer, h1, h2, p {
+html, body, header, section, footer, h1, h2, p, form, label, input {
   margin: 0px;
   padding: 0px;
   border: 0;
@@ -73,9 +73,10 @@ section.main h1 {
 }
 
 section.main p {
+  margin: 20px auto;
+  width: 500px;
   font-size: 24px;
   text-align: center;
-  margin: 20px;
 }
 
 footer h4 {
@@ -112,6 +113,7 @@ footer h4 {
   font-weight: normal;
   color: black;
   text-align: center;
+  margin-bottom: 0px;
 }
 .modal form {
   padding: 30px;
@@ -120,6 +122,11 @@ footer h4 {
   label, input {
     display: block;
     width: 100%;
+    margin-bottom: 10px;
+  }
+
+  label {
+    text-transform: uppercase;
   }
 
   p.input-help {
@@ -128,7 +135,7 @@ footer h4 {
   }
 
   input[type="submit"] {
-    margin: 20px 0px;
+    margin-top: 10px;
     float: right;
     width: auto;
     padding: 0px 15px;
@@ -140,14 +147,14 @@ footer h4 {
 }
 
 
-.modal form label {
-  margin-bottom: 7px;
-  text-transform: uppercase;
-}
+.modal form .error-messages {
+  padding-left: 20px;
+  margin-bottom: 20px;
+  color: #AC1717;
 
-.modal form .error-message-container {
-  height: 30px;
-  margin-bottom: 10px;
+  li {
+    margin: 7px 0px;
+  }
 }
 
 .modal form input {

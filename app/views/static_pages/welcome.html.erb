@@ -20,14 +20,16 @@
 
 <div class="modal modal-group" id="login-modal">
   <h3>Log in</h3>
-  <form class="clearfix">
-    <label for="login-email">Email address</label>
-      <input id="login-email" placeholder="name@company.com" type="text">
+  <form class="clearfix" id="login-form">
 
-    <div class="error-message-container"></div>
+    <ul class="error-messages"></ul>
+
+    <label for="login-email">Email address</label>
+      <input id="login-email" placeholder="name@company.com" name="user[email]" type="text">
+
 
     <label for="login-password">Password</label>
-      <input id="login-password" placeholder="password" type="text">
+      <input id="login-password" placeholder="password" name="user[password]" type="password">
 
     <p class="input-help">Forgot your pasword?</p>
 
@@ -36,14 +38,16 @@
 </div>
 
 <div class="modal modal-group" id="signup-modal">
-  <form>
-    <label for="signup-email">Email address</label>
-      <input type="text">
+  <h3>Sign Up</h3>
+  <form class="clearfix" id="signup-form">
 
-    <div class="error-message-container"></div>
+    <ul class="error-messages"></ul>
+
+    <label for="signup-email">Email address</label>
+      <input type="text" placeholder="name@company.com" name="user[email]">
 
     <label>Password</label>
-      <input type="password">
+      <input type="password" placeholder="password" name="user[password]">
 
     <input type="submit" value="Sign Up">
   </form>
@@ -56,6 +60,8 @@
   var $loginModal = $("#login-modal");
   var $signupModal = $("#signup-modal");
   var $modalOverlay = $("#modal-overlay");
+  var $signupForm = $("#signup-form");
+  var $loginForm = $("#login-form");
 
   var modalOff = function () {
     $('.modal-group').css({display: "none"});
@@ -74,6 +80,57 @@
   $modalOverlay.on('click', function (e) {
     modalOff();
   });
+
+  $loginForm.on("submit", function (e) {
+    e.preventDefault();
+    var $form = $(this);
+
+    $.ajax({
+      type: "POST",
+      url: "/api/session",
+      data: $form.serialize(),
+      success: function (data) {
+        // Redirect to App on success!
+        window.location.href = "/app";
+      },
+      error: function (data) {
+        var errors = data.responseJSON.errors;
+        if (errors) {
+          notifyErrors(errors, $form);
+        }
+      }
+    });
+  });
+
+  $signupForm.on("submit", function (e) {
+    e.preventDefault();
+    var $form = $(this);
+
+    $.ajax({
+      type: "POST",
+      url: "/api/users",
+      data: $form.serialize(),
+      success: function (data) {
+        // Redirect to App on success!
+        window.location.href = "/app";
+      },
+      error: function (data) {
+        var errors = data.responseJSON.errors;
+        if (errors) {
+          notifyErrors(errors, $form);
+        }
+      }
+    });
+  });
+
+  var notifyErrors = function (errors, $form) {
+    var $errorContainer = $form.find(".error-messages");
+    $errorContainer.empty();
+    errors.forEach( function (error) {
+      var $err = $("<li>").text(error);
+      $errorContainer.append($err);
+    });
+  };
 
 
   })();
