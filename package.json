@@ -1,5 +1,5 @@
 {
-  "name": "Luna",
+  "name": "Checkhov",
   "version": "1.0.0",
   "description": "== README",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
+    "flux": "^2.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",

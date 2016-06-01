@@ -2,182 +2,183 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// // reset
-//
-// html, body, header, section, footer, h1, h2, p, form, label, input {
-//   margin: 0px;
-//   padding: 0px;
-//   border: 0;
-//
-//   background: transparent;
-//
-//   font: inherit;
-//   font-size: 100%;
-//   vertical-align: baseline;
-//
-//   box-sizing: border-box;
-// }
-//
-// // clearfix;
-//
-// .clearfix:after {
-//   content: "";
-//   clear: both;
-//   display: block;
-// }
-// body {
-//   font-family: 'Montserrat', sans-serif;
-// }
-// header {
-//   height: 55px;
-//   padding: 0px 40px;
-// }
-//
-// header .logo {
-//   float: left;
-//   margin: 12px;
-//   font-size: 28px;
-//   margin-left: 80px;
-// }
-//
-// header button {
-//   float: right;
-//   margin: 10px;
-//   height: 35px;
-//   padding: 0px 13px;
-//   border: 2px solid #6a67ce;
-//   border-radius: 3px;
-//   color: white;
-//   background-color: #6a67ce;
-//   font-size: 12px;
-// }
-//
-// header button.login {
-//   background-color: white;
-//   color: #6a67ce
-// }
-//
-// section.main {
-//   height: 500px;
-//   border: 1px solid transparent;
-//   background: radial-gradient(circle at center,rgba(255,185,0,.6) 10%,rgba(252,99,107,.8) 40%,rgba(255,109,146,0) 70%);
-//   background-color: #FF6D92;
-//   color: white;
-//   // text-shadow:
-// }
-//
-// section.main h1 {
-//   font-size: 64px;
-//   text-align: center;
-//   margin-top: 100px;
-// }
-//
-// section.main p {
-//   margin: 20px auto;
-//   width: 500px;
-//   font-size: 24px;
-//   text-align: center;
-// }
-//
-// footer h4 {
-//   text-align: center;
-//   font-size: 32px;
-//   color: #676d76;
-// }
-//
-// #modal-overlay, .modal {
-//   position: absolute;
-//   display: none;
-// }
-//
-// #modal-overlay {
-//   background-color: rgba(76, 76, 76, .6);
-//   top: 0px;
-//   left: 0px;
-//   right: 0px;
-//   bottom: 0px;
-// }
-//
-// .modal {
-//   border-radius: 3px;
-//   background-color: white;
-//   width: 500px;
-//   top: 50%;
-//   left: 50%;
-//   transform: translateX(-50%) translateY(-50%);
-//   color: #a1a4aa;
-// }
-//
-// .modal h3 {
-//   font-size: 36px;
-//   font-weight: normal;
-//   color: black;
-//   text-align: center;
-//   margin-bottom: 0px;
-// }
-// .modal form {
-//   padding: 30px;
-//   font-size: 12px;
-//
-//   label, input {
-//     display: block;
-//     width: 100%;
-//     margin-bottom: 10px;
-//   }
-//
-//   label {
-//     text-transform: uppercase;
-//   }
-//
-//   p.input-help {
-//     color: #676d76;
-//     margin-top: 10px;
-//   }
-//
-//   input[type="submit"] {
-//     margin-top: 10px;
-//     float: right;
-//     width: auto;
-//     padding: 0px 15px;
-//     background-color: #6a67ce;
-//     border: 1px solid #6a67ce;
-//     color: white;
-//     border-radius: 3px;
-//   }
-// }
-//
-//
-// .modal form .error-messages {
-//   padding-left: 20px;
-//   margin-bottom: 20px;
-//   color: #AC1717;
-//
-//   li {
-//     margin: 7px 0px;
-//   }
-// }
-//
-// .modal form input {
-//   height: 40px;
-//   border: 1px solid #cdcfd2;
-//   font-size: 14px;
-//   padding-left: 10px;
-// }
-//
-// .x-icon {
-//   display: block;
-//   position: absolute;
-//   top: 0px;
-//   right: 0px;
-//   padding: 15px;
-//   font-size: 16px;
-//   font-weight: bold;
-// }
-//
-// .x-icon:after {
-//   content: "✕";
-// }
-//
-// .x-icon:hover {
-//   color: #02CEFF;
-// }
+// reset
+
+html, body, header, section, footer, h1, h2, p, form, label, a, input {
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+
+  background: transparent;
+
+  font: inherit;
+  color: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+
+  box-sizing: border-box;
+}
+
+// clearfix;
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+header {
+  height: 55px;
+  padding: 0px 40px;
+}
+
+header .logo {
+  float: left;
+  margin: 12px;
+  font-size: 28px;
+  margin-left: 80px;
+}
+
+header button {
+  float: right;
+  margin: 10px;
+  height: 35px;
+
+  border: 2px solid #6a67ce;
+  padding: 6px 13px;
+  border-radius: 3px;
+  color: white;
+  background-color: #6a67ce;
+  font-size: 12px;
+}
+
+.login {
+  background-color: white;
+  color: #6a67ce
+}
+
+section.main {
+  height: 500px;
+  border: 1px solid transparent;
+  background: radial-gradient(circle at center,rgba(255,185,0,.6) 10%,rgba(252,99,107,.8) 40%,rgba(255,109,146,0) 70%);
+  background-color: #FF6D92;
+  color: white;
+  // text-shadow:
+}
+
+section.main h1 {
+  font-size: 64px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+section.main p {
+  margin: 20px auto;
+  width: 500px;
+  font-size: 24px;
+  text-align: center;
+}
+
+footer h4 {
+  text-align: center;
+  font-size: 32px;
+  color: #676d76;
+}
+
+#modal-overlay, .modal {
+  position: absolute;
+}
+
+#modal-overlay {
+  background-color: rgba(76, 76, 76, .6);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.modal {
+  border-radius: 3px;
+  background-color: white;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: #a1a4aa;
+}
+
+.modal h3 {
+  font-size: 36px;
+  font-weight: normal;
+  color: black;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.modal form {
+  padding: 30px;
+  font-size: 12px;
+
+  label, input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  label {
+    text-transform: uppercase;
+  }
+
+  p.input-help {
+    color: #676d76;
+    margin-top: 10px;
+  }
+
+  input[type="submit"] {
+    margin-top: 10px;
+    float: right;
+    width: auto;
+    padding: 0px 15px;
+    background-color: #6a67ce;
+    border: 1px solid #6a67ce;
+    color: white;
+    border-radius: 3px;
+  }
+}
+
+
+.modal form .error-messages {
+  padding-left: 20px;
+  margin-bottom: 20px;
+  color: #AC1717;
+
+  li {
+    margin: 7px 0px;
+  }
+}
+
+.modal form input {
+  height: 40px;
+  border: 1px solid #cdcfd2;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.x-icon {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.x-icon:after {
+  content: "✕";
+}
+
+.x-icon:hover {
+  color: #02CEFF;
+}

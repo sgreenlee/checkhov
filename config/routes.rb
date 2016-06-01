@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  root to: "static_pages#app", as: "app"
-
-  get "/welcome" => "logins#welcome"
+  root to: "static_pages#root", as: "home"
 
   namespace :api, defaults: {format: :json } do
 

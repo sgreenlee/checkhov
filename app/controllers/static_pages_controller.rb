@@ -2,8 +2,8 @@ class StaticPagesController < ApplicationController
 
   before_action :require_login!
 
-  def app
-    render :app
+  def root
+    render :root
   end
 
 end

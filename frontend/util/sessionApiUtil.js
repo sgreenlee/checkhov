@@ -1,13 +1,19 @@
+var ServerActions = require("../actions/ServerActions");
+
 var SessionApiUtil = {
 
-  login: function (email, password) {
+  login: function (user) {
     $.ajax({
       type: "POST",
       url: "/api/session",
       dataType: "json",
-      data: { user: { email: email, password: password }},
-      success: function (data) {
-        console.log(data);
+      data: { "user": { "email": user.email, "password": user.password }},
+      success: function (user) {
+        ServerActions.receiveCurrentUser(user);
+      },
+      error: function (response) {
+        var errors = response.responseJSON.errors;
+        if (errors) ServerActions.receiveUserErrors(errors);
       }
     });
   },

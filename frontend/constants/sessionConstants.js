@@ -1,0 +1,5 @@
+module.exports = {
+  LOGOUT: "LOGOUT",
+  RECEIVE_CURRENT_USER: "RECEIVE_CURRENT_USER",
+  ERROR: "ERROR"
+};
