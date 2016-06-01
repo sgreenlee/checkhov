@@ -12,8 +12,6 @@ class Api::MembersController < ApplicationController
       render :create
     end
 
-
-    // NOTE: maybe not necessary?
     private
 
     def member_params

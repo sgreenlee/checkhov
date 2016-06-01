@@ -43,7 +43,6 @@ var routes = (
 document.addEventListener("DOMContentLoaded", function() {
   ReactDOM.render(
     <Router history={hashHistory}>{ routes }</Router>,
-    // <App />,
     document.getElementById("app-root"));
 });
 
