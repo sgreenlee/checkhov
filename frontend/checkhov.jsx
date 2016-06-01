@@ -13,12 +13,20 @@ var Welcome = require("./components/welcome");
 var Login = require("./components/login");
 var Signup = require("./components/signup");
 
+var SessionStore = require("./stores/sessionStore");
 
 var Root = React.createClass({
   render: function() {
     return <div>{ this.props.children }</div>;
   }
 });
+
+function _ensureLoggedIn(nextState, replace, asyncCallback) {
+  if (!SessionStore.getCurrentUser()) {
+    replace("/");
+    asyncCallback();
+  }
+}
 
 var routes = (
   <Route path="/" component={Root}>
@@ -27,8 +35,7 @@ var routes = (
       <Route path="login" component={Login} />
       <Route path="signup" component={Signup} />
     </Route>
-    <Route path="app" component={App}>
-
+    <Route path="app" onEnter={_ensureLoggedIn} component={App}>
     </Route>
   </Route>
 );
