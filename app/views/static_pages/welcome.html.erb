@@ -16,9 +16,10 @@
   <h4>I don't know what to put down here yet.</h4>
 </footer>
 
-<div id="modal-overlay" class="modal-group"></div>
+<div id="modal-overlay" class="modal-group modal-close"></div>
 
 <div class="modal modal-group" id="login-modal">
+  <span class="modal-close x-icon"></span>
   <h3>Log in</h3>
   <form class="clearfix" id="login-form">
 
@@ -38,6 +39,7 @@
 </div>
 
 <div class="modal modal-group" id="signup-modal">
+  <span class="modal-close x-icon"></span>
   <h3>Sign Up</h3>
   <form class="clearfix" id="signup-form">
 
@@ -77,7 +79,7 @@
     $signupModal.css({ display: "block" });
   });
 
-  $modalOverlay.on('click', function (e) {
+  $('.modal-close').on('click', function (e) {
     modalOff();
   });
 
