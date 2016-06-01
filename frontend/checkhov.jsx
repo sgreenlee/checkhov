@@ -6,3 +6,5 @@ var App = require("./components/app");
 document.addEventListener("DOMContentLoaded", function() {
   ReactDOM.render(<App />, document.getElementById("app-root"));
 });
+
+window.SessionApiUtil = require("./util/sessionApiUtil");
