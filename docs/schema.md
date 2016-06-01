@@ -5,27 +5,26 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 email           | string    | not null, indexed, unique
-first           | string    | not null
-last            | string    | not null
+first           | string    |
+last            | string    |
 avatar_url      | string    |
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 confirmed       | boolean   | not null, indexed
 
-## workspaces
+## teams
 
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-email           | string    | not null, indexed, unique
-first           | string    | not null
+name            | string    | not null
 
 ## team_memberships
 
 column name     | data type | details
 ----------------|-----------|-----------------------
 user_id         | integer   | not null, indexed, references: users(id)
-workspace_id    | integer   | not null, indexed, references: workspaces(id)
+workspace_id    | integer   | not null, indexed, references: teams(id)
 permissions     | integer   | not null
 
 ## projects
@@ -35,7 +34,7 @@ column name  | data type | details
 id           | integer   | not null, primary key
 title        | string    | not null
 description  | text      |
-workspace_id | integer   | not null, references: workspaces(id)
+team_id | integer        | not null, references: teams(id)
 
 ## tasks
 
@@ -44,7 +43,7 @@ column name  | data type | details
 id           | integer   | not null, primary key
 title        | string    | not null
 description  | text      |
-workspace_id | integer   | not null, indexed, references: workspaces(id)
+workspace_id | integer   | not null, indexed, references: teams(id)
 project_id   | integer   | indexed, references: projects(id)
 asignee_id   | integer   | references: users(id)
 due_date     | datetime  |
