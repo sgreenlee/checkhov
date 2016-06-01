@@ -1,6 +1,6 @@
 var React = require("react");
 var UserActions = require("../actions/userActions");
-var SessionStore = require("../stores/SessionStore");
+var SessionStore = require("../stores/sessionStore");
 
 var Signup = React.createClass({
 
