@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git filter-branch --env-filter '
+git filter-branch -f --env-filter '
 OLD_EMAIL="victoracechen@gmail.com"
 CORRECT_NAME="Sam Greenlee"
 CORRECT_EMAIL="sam.a.greenlee@gmail.com"
