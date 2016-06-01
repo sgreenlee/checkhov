@@ -9,3 +9,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 window.SessionApiUtil = require("./util/sessionApiUtil");
 window.UserApiUtil = require("./util/userApiUtil");
+window.TeamApiUtil = require("./util/teamApiUtil");
