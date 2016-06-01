@@ -1,11 +1,9 @@
 class StaticPagesController < ApplicationController
 
-  def welcome
-    redirect_to app_url if current_user
-    render :welcome
-  end
+  before_action :require_login!
 
   def app
     render :app
   end
+
 end

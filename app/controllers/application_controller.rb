@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     @current_user.reset_session_token! if @current_user
     @current_user = nil
   end
+
+  def require_login!
+    redirect_to welcome_url unless current_user
+  end
 end

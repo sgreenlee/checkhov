@@ -1,0 +1,59 @@
+<header class="clearfix">
+  <img src="<%= image_url("Checkhov-logo.png") %>" height="55" alt="">
+
+  <button class="login" id="header-login">Log In</button>
+  <button id="header-signup">Get Started for FREE</button>
+
+</header>
+
+<section class="main">
+
+  <h1>Lorem ipsum dolor sit amet.</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quae dolore porro! Quidem, quo, sunt.</p>
+
+</section>
+
+<footer>
+  <h4>I don't know what to put down here yet.</h4>
+</footer>
+
+<div id="modal-overlay" class="modal-group modal-close"></div>
+
+<div class="modal modal-group" id="login-modal">
+  <span class="modal-close x-icon"></span>
+  <h3>Log in</h3>
+  <form class="clearfix" id="login-form">
+
+    <ul class="error-messages"></ul>
+
+    <label for="login-email">Email address</label>
+      <input id="login-email" placeholder="name@company.com" name="user[email]" type="text">
+
+
+    <label for="login-password">Password</label>
+      <input id="login-password" placeholder="password" name="user[password]" type="password">
+
+    <p class="input-help">Forgot your pasword?</p>
+
+    <input type="submit" value="Log In">
+  </form>
+</div>
+
+<div class="modal modal-group" id="signup-modal">
+  <span class="modal-close x-icon"></span>
+  <h3>Sign Up</h3>
+  <form class="clearfix" id="signup-form">
+
+    <ul class="error-messages"></ul>
+
+    <label for="signup-email">Email address</label>
+      <input type="text" placeholder="name@company.com" name="user[email]">
+
+    <label>Password</label>
+      <input type="password" placeholder="password" name="user[password]">
+
+    <input type="submit" value="Sign Up">
+  </form>
+</div>
+
+<%= javascript_include_tag  "welcome_modals.js" %>
