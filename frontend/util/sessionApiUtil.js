@@ -24,7 +24,7 @@ var SessionApiUtil = {
       url: "/api/session",
       dataType: "json",
       success: function (data) {
-        console.log(data);
+        ServerActions.logout();
       }
     });
   },
@@ -34,8 +34,8 @@ var SessionApiUtil = {
       type: "GET",
       url: "/api/session",
       dataType: "json",
-      success: function (data) {
-        console.log(data);
+      success: function (user) {
+        ServerActions.receiveCurrentUser(user);
       }
     });
   }

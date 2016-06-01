@@ -7,19 +7,11 @@ var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
 
+var SplashScreen = require("./components/splashScreen");
 var App = require("./components/app");
 var Welcome = require("./components/welcome");
 var Login = require("./components/login");
 var Signup = require("./components/signup");
-
-
-function _ensureLoggedIn (state, replace, asyncCompletionCallback) {
-  if (!SessionStore.currentUser()) {
-
-  }
-
-  asyncCompletionCallback();
-}
 
 
 var Root = React.createClass({
@@ -29,7 +21,8 @@ var Root = React.createClass({
 });
 
 var routes = (
-  <Route path="/"  component={Root}>
+  <Route path="/" component={Root}>
+    <IndexRoute component={SplashScreen} />
     <Route path="welcome" component={Welcome}>
       <Route path="login" component={Login} />
       <Route path="signup" component={Signup} />

@@ -3,7 +3,14 @@ var SessionConstants = require("../constants/SessionConstants");
 
 var ServerActions = {
 
+  logout: function () {
+    AppDispatcher.dispatch({
+      actionType: SessionConstants.LOGOUT
+    });
+  },
+
   receiveCurrentUser: function (user) {
+    if (!user.id) user = null;
     AppDispatcher.dispatch({
       actionType: SessionConstants.RECEIVE_CURRENT_USER,
       user: user
