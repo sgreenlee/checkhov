@@ -20,6 +20,9 @@ var AccountSetup = require("./components/accountSetup");
 var ProfileSetup = require("./components/profileSetup");
 var TeamSetup = require("./components/teamSetup");
 var TeamHome = require("./components/teamHome");
+var TeamTaskList = require("./components/teamTaskList");
+var ProjectTaskList = require("./components/projectTaskList");
+var TaskDetail = require("./components/TaskDetail");
 
 // Stores
 var SessionStore = require("./stores/sessionStore");
@@ -54,7 +57,13 @@ var routes = (
     </Route>
 
     <Route path="teams/:teamId" component={TeamHome}>
-
+      <IndexRedirect to="all" />
+      <Route path="all" component={TeamTaskList}>
+        <Route path="t/:taskId" component={TaskDetail} />
+      </Route>
+      <Route path="p/:projectId" component={ProjectTaskList}>
+        <Route path="t/:taskId" component={TaskDetail} />
+      </Route>
     </Route>
   </Route>
 );

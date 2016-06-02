@@ -2,9 +2,10 @@ var TeamApiUtil = require("../util/teamApiUtil");
 
 var TeamActions = {
 
-  createTeam: TeamApiUtil.createTeam
+  createTeam: TeamApiUtil.createTeam,
+  getTeam: TeamApiUtil.getTeam
 
 };
 
 
-module.exports = TeamApiUtil;
+module.exports = TeamActions;

@@ -4,6 +4,23 @@
 
 // reset
 
+@font-face {
+  font-family: "Proxima Nova Regular";
+  src: url(/assets/Proxima-Nova-Regular.otf) format("truetype");
+}
+
+$primary-background: #FF6D92;
+$light-blue: #1AAFD0;
+
+// dimensions
+$top-bar-height: 40px;
+$project-header-height: 65px;
+
+
+* {
+  box-sizing: border-box;
+}
+
 html, body, header, section, footer, h1, h2, p, form, label, a, input, div {
   margin: 0px;
   padding: 0px;
@@ -17,17 +34,20 @@ html, body, header, section, footer, h1, h2, p, form, label, a, input, div {
   vertical-align: baseline;
 
   box-sizing: border-box;
+  text-decoration: none;
+
 }
 
 // clearfix;
 
-.clearfix:after {
+.clearfix::after {
   content: "";
   clear: both;
   display: block;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Proxima-Nova-Regular', sans-serif;
+  color: #1B2432;
 }
 header {
   height: 55px;
@@ -54,6 +74,18 @@ header button {
   font-size: 12px;
 }
 
+button {
+  height: 35px;
+
+  border: 2px solid #6a67ce;
+  padding: 6px 13px;
+  border-radius: 3px;
+  color: white;
+  background-color: #6a67ce;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 .login {
   background-color: white;
   color: #6a67ce
@@ -63,7 +95,7 @@ section.main {
   height: 500px;
   border: 1px solid transparent;
   background: radial-gradient(circle at center,rgba(255,185,0,.6) 10%,rgba(252,99,107,.8) 40%,rgba(255,109,146,0) 70%);
-  background-color: #FF6D92;
+  background-color: $primary-background;
   color: white;
   // text-shadow:
 }
@@ -175,7 +207,7 @@ footer h4 {
   font-weight: bold;
 }
 
-.x-icon:after {
+.x-icon::after {
   content: "✕";
 }
 
@@ -246,4 +278,197 @@ footer h4 {
 
 .account-setup-modal h3 {
     margin: 0;
+}
+
+#team-home-component {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+#teams-sidebar {
+  position: relative;
+  float: left;
+  bottom: 0px;
+  width: 244px;
+  height: 100%;
+  color: white;
+  background-color: #2E3C54;
+
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 10px 25px;
+  }
+
+  h3::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    right: 7px;
+    height: 25px;
+    width: 25px;
+    background-color: #fc7279;
+    border-radius: 50%;
+  }
+}
+
+#teams-main {
+  float: left;
+  height: 100%;
+  width: calc(100% - 245px);
+}
+
+#top-bar {
+  height: 40px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+
+  nav {
+    height: 30px;
+    align-self: center;
+    width: 235px;
+
+    a {
+      display: inline-block;
+      font-size: 11px;
+      height: inherit;
+      text-transform: uppercase;
+      font-weight: normal;
+      line-height: 30px;
+      vertical-align: middle;
+      padding: 0px;
+      margin: 0px 12px;
+    }
+
+    a.icon-dropdown::after {
+      content: "＋";
+      margin: 3px;
+      display: block;
+      position: relative;
+      line-height: 24px;
+      vertical-align: middle;
+      font-size: 18px;
+      text-align: center;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: $primary-background;
+      background-image: linear-gradient(to right top, rgb(252, 99, 107), rgb(255, 109, 146) 35%, rgb(255, 185, 0) 100%);
+    }
+
+    a:hover {
+      color: #02ceff;
+    }
+
+  }
+
+  #team-nav {
+    margin: 0;
+    padding-left: 15px;
+
+  }
+
+  #search {
+    width: 510px;
+    border: 1px solid rgba(170, 170, 170, .7);
+    border-radius: 15px;
+  }
+
+  #account-nav {
+    margin: 0;
+    // text-align: right;
+
+    a {
+      font-size: 14px;
+      margin-right: 15px;
+      text-transform: none;
+      color: #898e95;
+      display: block;
+      float: right;
+    }
+
+    a:hover {
+      color: #02ceff;
+    }
+
+    .user-avatar {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: #4186e0;
+      border-radius: 50%;
+      margin: 0px;
+      float: right;
+      margin-left: 10px;
+    }
+
+    a:hover > .user-avatar {
+      border: 2px solid #02ceff;
+    }
+  }
+
+}
+
+#project-header {
+  height: 65px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px 1px;
+  text-align: center;
+  padding: 8px;
+
+  h1 {
+    font-size: 24px;
+    margin: auto;
+  }
+}
+
+#content-pane {
+
+  height: calc(100% - 105px);
+  padding: 15px 30px 0px 30px;
+
+  .task-list-container {
+    border-radius: 3px 3px 0 0;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0.6px 1px 3px 1px;
+    float: left;
+    margin: 0px;
+    margin-right: 15px;
+    width: calc(55% - 15px);
+
+    .header {
+      padding: 15px 30px 0px 30px;
+
+      button {
+        background-color: white;
+        color: $light-blue;
+        border: solid 1px $light-blue;
+        height: 30px;
+        padding: 0px 10px;
+        font-size: 13px;
+        
+      }
+    }
+  }
+
+  .task-detail-container {
+    width: 45%;
+    border-radius: 3px 3px 0 0;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0.6px 1px 3px 1px;
+    margin: 0px;
+    float: left;
+
+  }
+
+  .task-list-container:only-child {
+    float: none;
+    margin: auto;
+    width: 900px;
+  }
 }

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :teams, only: [:create, :update, :index, :show] do
 
       resources :members, only: [:index, :create]
+      resources :tasks, only: [:index, :create]
+      resources :projects, only: [:index, :create]
 
     end
 

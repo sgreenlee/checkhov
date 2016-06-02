@@ -8,6 +8,7 @@ var _errors = [];
 var _lastReceivedTeam = null;
 
 function _receiveAll(teams) {
+  _teams = {};
   teams.forEach( function (team){
     _teams[team.id] = team;
   });

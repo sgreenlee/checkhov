@@ -1,6 +1,7 @@
 var AppDispatcher = require("../dispatcher/dispatcher");
 var SessionConstants = require("../constants/sessionConstants");
 var TeamConstants = require("../constants/teamConstants");
+var TaskConstants = require("../constants/taskConstants");
 
 var ServerActions = {
 
@@ -36,6 +37,14 @@ var ServerActions = {
     AppDispatcher.dispatch({
       actionType: TeamConstants.RECEIVE_ALL_TEAMS,
       teams: teams
+    });
+  },
+
+  receiveAllTasks: function (data) {
+    AppDispatcher.dispatch({
+      actionType: TaskConstants.RECEIVE_ALL_TASKS,
+      teamId: data.team.team_id,
+      tasks: data.tasks || []
     });
   }
 
