@@ -2,7 +2,8 @@ var UserApiUtil = require("../util/userApiUtil");
 
 var UserActions = {
 
-createUser: UserApiUtil.createUser
+  createUser: UserApiUtil.createUser,
+  updateUser: UserApiUtil.updateUser
 
 };
 

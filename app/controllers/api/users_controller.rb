@@ -10,6 +10,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+    if @user && @user.update(user_params)
+      render "api/sessions/show"
+    else
+      render json: {errors: ["request failed"]}, status: 422
+    end
+  end
+
 
   private
 

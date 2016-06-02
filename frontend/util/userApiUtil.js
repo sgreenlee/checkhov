@@ -16,6 +16,22 @@ var UserApiUtil = {
         if (errors) ServerActions.receiveUserErrors(errors);
       }
     });
+  },
+
+  updateUser: function(user) {
+    $.ajax({
+      type: "PATCH",
+      url: "/api/users",
+      data: {user: { first_name: user.first, last_name: user.last }},
+      dataType: "json",
+      success: function (user) {
+        ServerActions.receiveCurrentUser(user);
+      },
+      error: function (response) {
+        var errors = response.responseJSON.errors;
+        if (errors) ServerActions.receiveUserErrors(errors);
+      }
+    });
   }
 
 };

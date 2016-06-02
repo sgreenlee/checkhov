@@ -4,7 +4,7 @@
 
 // reset
 
-html, body, header, section, footer, h1, h2, p, form, label, a, input {
+html, body, header, section, footer, h1, h2, p, form, label, a, input, div {
   margin: 0px;
   padding: 0px;
   border: 0;
@@ -181,4 +181,69 @@ footer h4 {
 
 .x-icon:hover {
   color: #02CEFF;
+}
+
+.account-setup-bg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #fc7279;
+  background-image: linear-gradient(to top right,#fc7279 10%, #ff7b9c 65%, #ffc019 125%);
+}
+
+.account-setup-modal {
+  width: 723px;
+  padding:45px 90px;
+
+  form {
+
+    padding: 0px;
+    padding-top: 30px;
+
+    input {
+      width: 340px;
+    }
+
+    .avatar-frame {
+      position: absolute;
+      top: 190px;
+      right: 90px;
+      width: 170px;
+      height: 170px;
+      line-height: 170px;
+      border-radius: 50%;
+      border: 1px dashed #898E95;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .avatar-frame:hover {
+      color: #02ceff;
+      border: none;
+      box-shadow: 0 0 0 2px #02ceff;
+    }
+
+    input[type="submit"] {
+      clear: both;
+      margin-top: 40px;
+      background-color: #1AAFD0;
+      border-color: #1AAFD0;
+    }
+  }
+
+  form.team-form {
+    input {
+      width: 100%;
+    }
+
+    input[type="submit"] {
+      width: auto;
+    }
+  }
+}
+
+.account-setup-modal h3 {
+    margin: 0;
 }
