@@ -21,7 +21,7 @@ var TeamSetup = require("./components/teamSetup");
 var TeamHome = require("./components/teamHome");
 var TeamTaskList = require("./components/teamTaskList");
 var ProjectTaskList = require("./components/projectTaskList");
-var TaskDetail = require("./components/TaskDetail");
+var TaskDetail = require("./components/taskDetail");
 
 // Stores
 var SessionStore = require("./stores/sessionStore");
