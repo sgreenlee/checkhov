@@ -8,7 +8,7 @@ var TaskApiUtil = {
       url: "/api/teams/" + teamId +"/tasks",
       dataType: "json",
       success: function (data) {
-        debugger
+
         ServerActions.receiveAllTasks(data);
       },
       error: function (data) {

@@ -23,12 +23,12 @@ var ProfileSetup = React.createClass({
   onSubmit: function (e) {
     e.preventDefault();
     UserActions.updateUser({first: this.state.first, last: this.state.last });
-    debugger
+    
   },
 
   onResponse: function () {
     this.context.router.push("/setup/team");
-    debugger
+    
   },
 
   firstChange: function (e) {
