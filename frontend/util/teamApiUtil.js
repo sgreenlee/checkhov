@@ -1,3 +1,5 @@
+var ServerActions = require("../actions/serverActions");
+
 var TeamApiUtil = {
 
   fetchTeams: function () {
@@ -5,8 +7,8 @@ var TeamApiUtil = {
       type: "GET",
       url: "/api/teams",
       dataType: "json",
-      success: function (data) {
-        console.log(data);
+      success: function (teams) {
+        ServerActions.receiveAllTeams(teams);
       }
     });
   },
@@ -17,8 +19,8 @@ var TeamApiUtil = {
       url: "/api/teams",
       dataType: "json",
       data: { team: team },
-      success: function (data) {
-        console.log(data);
+      success: function (team) {
+        ServerActions.receiveTeam(team);
       }
     });
   },
@@ -28,8 +30,8 @@ var TeamApiUtil = {
       type: "GET",
       url: "/api/teams/" + id,
       dataType: "json",
-      success: function (data) {
-        console.log(data);
+      success: function (team) {
+        ServerActions.receiveTeam(team);
       }
     });
   },
@@ -41,7 +43,7 @@ var TeamApiUtil = {
       dataType: "json",
       data: { team: { name: team.name }},
       success: function (data) {
-        console.log(data);
+        ServerActions.receiveTeam(team);
       }
     });
   }

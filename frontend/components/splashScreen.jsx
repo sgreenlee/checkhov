@@ -11,21 +11,35 @@ var SplashScreen = React.createClass({
     return null;
   },
 
+  redirectToApp: function () {
+    this.context.router.push("/app");
+  },
+
+  redirectToLogin: function () {
+    this.context.router.push("/welcome");
+  },
+
   componentDidMount: function () {
     if (SessionStore.getCurrentUser()) {
-      this.context.router.push("/app");
+      // user is authenticated
+      this.redirectToApp();
     }
-    else {
+    else if (!SessionStore.currentUserIsFetched()){
+      // authentication status unknown -- query server
       this.listener = SessionStore.addListener(this.onUpdate);
       SessionActions.fetchCurrentUser();
+    } else {
+      // user not authenticated
+      this.redirectToLogin();
     }
   },
 
   onUpdate: function () {
     if (SessionStore.getCurrentUser()) {
-      this.context.router.push("/app");
+      // user is logged in
+      this.redirectToApp();
     } else {
-      this.context.router.push("/welcome");
+      this.redirectToLogin();
     }
   },
 

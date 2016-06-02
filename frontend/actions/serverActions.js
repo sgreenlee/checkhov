@@ -1,5 +1,6 @@
 var AppDispatcher = require("../dispatcher/dispatcher");
 var SessionConstants = require("../constants/sessionConstants");
+var TeamConstants = require("../constants/teamConstants");
 
 var ServerActions = {
 
@@ -21,6 +22,20 @@ var ServerActions = {
     AppDispatcher.dispatch({
       actionType: SessionConstants.ERROR,
       errors: errors
+    });
+  },
+
+  receiveTeam: function (team) {
+    AppDispatcher.dispatch({
+      actionType: TeamConstants.RECEIVE_TEAM,
+      team: team
+    });
+  },
+
+  receiveAllTeams: function (teams) {
+    AppDispatcher.dispatch({
+      actionType: TeamConstants.RECEIVE_ALL_TEAMS,
+      teams: teams
     });
   }
 

@@ -1,5 +1,6 @@
 var React = require("react");
 var TeamActions = require("../actions/teamActions");
+var TeamStore = require("../stores/teamStore");
 
 var TeamSetup = React.createClass({
   contextTypes: {
@@ -7,12 +8,11 @@ var TeamSetup = React.createClass({
   },
 
   getInitialState: function() {
-    // var user = SessionStore.getCurrentUser() || {};
     return {name: ""};
   },
 
   componentDidMount: function () {
-    // this.listener = SessionStore.addListener(this.onResponse);
+    this.listener = TeamStore.addListener(this.onResponse);
   },
 
   componentWillUnmount: function () {
@@ -25,13 +25,19 @@ var TeamSetup = React.createClass({
   },
 
   onResponse: function () {
-    this.context.router.push("/setup/team");
+    var errors = TeamStore.getErrors();
+    debugger
+    if (errors.length === 0) {
+      // redirect to app on success
+      var teamId = TeamStore.getLastReceivedTeam();
+      this.context.router.push("/teams/" + teamId);
+    }
   },
 
   nameChange: function (e) {
     this.setState({name: e.target.value});
   },
-  
+
   render: function() {
     return (
       <div>
