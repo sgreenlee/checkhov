@@ -12,7 +12,6 @@ var hashHistory = ReactRouter.hashHistory;
 
 // Components
 var SplashScreen = require("./components/splashScreen");
-var App = require("./components/app");
 var Welcome = require("./components/welcome");
 var Login = require("./components/login");
 var Signup = require("./components/signup");

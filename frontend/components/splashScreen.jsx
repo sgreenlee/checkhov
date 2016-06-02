@@ -1,6 +1,8 @@
 var React = require("react");
 var SessionStore = require("../stores/sessionStore");
 var SessionActions = require("../actions/sessionActions");
+var TeamActions = require("../actions/teamActions");
+var TeamStore = require("../stores/teamStore");
 
 var SplashScreen = React.createClass({
   contextTypes: {
@@ -11,22 +13,15 @@ var SplashScreen = React.createClass({
     return null;
   },
 
-  redirectToApp: function () {
-    this.context.router.push("/app");
-  },
-
-  redirectToLogin: function () {
-    this.context.router.push("/welcome");
-  },
 
   componentDidMount: function () {
     if (SessionStore.getCurrentUser()) {
       // user is authenticated
-      this.redirectToApp();
+      this.loadTeamInfo();
     }
     else if (!SessionStore.currentUserIsFetched()){
       // authentication status unknown -- query server
-      this.listener = SessionStore.addListener(this.onUpdate);
+      this.listener = SessionStore.addListener(this.onAuthUpdate);
       SessionActions.fetchCurrentUser();
     } else {
       // user not authenticated
@@ -34,25 +29,50 @@ var SplashScreen = React.createClass({
     }
   },
 
-  onUpdate: function () {
+  onAuthUpdate: function () {
     if (SessionStore.getCurrentUser()) {
       // user is logged in
-      this.redirectToApp();
+      this.loadTeamInfo();
     } else {
       this.redirectToLogin();
     }
   },
 
-  componentWillUnmount: function () {
-    if (this.listener) {
-      this.listener.remove();
+  redirectToLogin: function () {
+    this.context.router.push("/welcome");
+  },
+
+  loadTeamInfo: function () {
+    this.teamListener = TeamStore.addListener(this.onTeamLoad);
+    TeamActions.fetchTeams();
+  },
+
+  onTeamLoad: function () {
+    var teams = TeamStore.all()
+    if (teams.length === 0) {
+      // redirect to setup
+      this.context.router.push("/setup");
     }
+    else {
+      this.redirectToApp();
+    }
+  },
+
+  redirectToApp: function () {
+    var teamId = TeamStore.all()[0].id
+    this.context.router.push("/teams/" + teamId);
+  },
+
+
+  componentWillUnmount: function () {
+    this.teamListener && this.teamListener.remove();
+    this.authListener && this.authListener.remove();
   },
 
   render: function() {
     return (
       <div className="splash">
-        <h1>Checkhov</h1>
+        <h1>Checkhov Splash Splash Screen</h1>
       </div>
     );
   }
