@@ -21,7 +21,7 @@ var SplashScreen = React.createClass({
     }
     else if (!SessionStore.currentUserIsFetched()){
       // authentication status unknown -- query server
-      this.listener = SessionStore.addListener(this.onAuthUpdate);
+      this.authListener = SessionStore.addListener(this.onAuthUpdate);
       SessionActions.fetchCurrentUser();
     } else {
       // user not authenticated
@@ -30,6 +30,7 @@ var SplashScreen = React.createClass({
   },
 
   onAuthUpdate: function () {
+    this.authListener && this.authListener.remove();
     if (SessionStore.getCurrentUser()) {
       // user is logged in
       this.loadTeamInfo();
@@ -48,6 +49,7 @@ var SplashScreen = React.createClass({
   },
 
   onTeamLoad: function () {
+    this.teamListener && this.teamListener.remove();
     var teams = TeamStore.all()
     if (teams.length === 0) {
       // redirect to setup
