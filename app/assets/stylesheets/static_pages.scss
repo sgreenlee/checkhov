@@ -200,6 +200,8 @@ footer h4 {
 
 .x-icon {
   display: block;
+  color: #898e95;
+  cursor: pointer;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -479,11 +481,44 @@ footer h4 {
   list-style: none;
   padding: 0px;
 
+  li {
+    height: 35px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 35px;
+    padding-left: 30px;
+    border-radius: 1px;
+
+    a {
+      display: block;
+      width: 100%;
+      height: 35px;
+    }
+
+    .task-line {
+      height: 35px;
+    }
+  }
+
+  li:hover {
+    border: 1px solid #E0E0E0;
+
+    .task-line {
+      border: none;
+    }
+  }
+}
+
+.task-line {
+  padding-left: 40px;
+  border-top: 1px solid #E5E5E5;
+  position: relative;
+
   .complete-task-button {
     margin: 7px 10px;
     color: #E1E2E4;
     position: absolute;
-    left: 30px;
+    left: 0px;
     display: block;
     border-radius: 50%;
     width: 20px;
@@ -504,50 +539,70 @@ footer h4 {
     border: 2px solid #3BF7D1;
   }
 
-  .completed .complete-task-button {
+  .complete-task-button.completed  {
     background-color: #3BF7D1;
     color: white;
-    border: 1px solid #E1E2E4;
+    border: 1px solid transparent;
   }
-
-  li {
-    position: relative;
-    height: 35px;
-    width: 100%;
-    font-size: 14px;
-    line-height: 35px;
-    padding-left: 30px;
-    border-radius: 1px;
-
-    a {
-      display: block;
-      width: 100%;
-      height: 35px;
-    }
-
-    .task-info-container {
-      padding-left: 40px;
-      border-top: 1px solid #E5E5E5;
-    }
-  }
-
-  li:hover {
-    border: 1px solid #E0E0E0;
-
-    .task-info-container {
-      border: none;
-    }
-  }
-}
-
-.task-list-item {
 
   textarea {
     resize: none;
     border: 0px solid transparent;
-    height: 35px;
+    height: inherit;
     outline: none;
 
+  }
+}
+
+.task-description {
+  margin: 10px 30px 10px 60px;
+  display: block;
+  width: calc(100% - 90px);
+  min-height: 2em;
+  padding: 12px;
+  resize: none;
+  outline: none;
+  font-size: 14px;
+  line-height: 20px;
+
+}
+
+.task-description:hover {
+  border: 1px solid rgb(205, 207, 210);
+}
+
+.task-detail-container {
+  position: relative;
+
+  .header {
+    padding: 15px 30px;
+    height: 60px;
+    border-bottom: 1px solid #B9BCC0;
+  }
+
+  .project-info {
+    height: 40px;
+  }
+
+  .task-line {
+    height: 40px;
+    margin: 5px 30px;
+    line-height: 40px;
+    padding-left: 50px;
+    border-top: none;
+
+    .complete-task-button {
+      left: 5px;
+      height: 30px;
+      width: 30px;
+      margin: 5px;
+      font-size: 26px;
+      line-height: 30px;
+    }
+  }
+
+  .task-line:hover {
+    border: 1px solid #E0E0E0;
   }
 
 }

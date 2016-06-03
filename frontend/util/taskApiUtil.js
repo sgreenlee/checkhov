@@ -55,6 +55,17 @@ var TaskApiUtil = {
         }
       }
     });
+  },
+
+  getTask: function (taskId) {
+    $.ajax({
+      type: "GET",
+      url: "/api/tasks/" + taskId,
+      dataType: "json",
+      success: function (task) {
+        ServerActions.receiveTask(task);
+      }
+    });
   }
 
 };

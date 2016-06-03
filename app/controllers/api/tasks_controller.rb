@@ -25,6 +25,11 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def show
+    @task = Task.find(params[:id])
+    render "api/tasks/show"
+  end
+
 
 
   private

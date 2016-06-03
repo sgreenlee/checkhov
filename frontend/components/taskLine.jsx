@@ -1,11 +1,16 @@
 var React = require("react");
 var TaskActions = require("../actions/taskActions");
 
-var TaskListItem = React.createClass({
+var TaskLine = React.createClass({
 
   getInitialState: function () {
     var task = this.props.task;
     return { title: task.title, completed: task.completed, changesPending: false };
+  },
+
+  componentWillReceiveProps: function (props) {
+    var task = props.task || {};
+    this.setState({ title: task.title, completed: task.completed, changesPending: false });
   },
 
   handleClick: function () {
@@ -49,18 +54,16 @@ var TaskListItem = React.createClass({
   },
 
   render: function() {
-    var completed = this.props.task.completed ? "completed" : "";
     var task = this.props.task;
+    var completed = task.completed ? " completed" : "";
     return (
-      <li onClick={this.handleClick} className={"task-list-item " + completed}>
-        <div className="task-info-container">
-          <a onClick={this.toggleComplete} className="complete-task-button"></a>
+        <div className="task-line">
+          <a onClick={this.toggleComplete} className={"complete-task-button" + completed }></a>
           <textarea onChange={this.onChange} onBlur={this.onBlur} value={this.state.title}></textarea>
         </div>
-      </li>
     );
   }
 
 });
 
-module.exports = TaskListItem;
+module.exports = TaskLine;

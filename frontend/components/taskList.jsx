@@ -1,5 +1,5 @@
 var React = require("react");
-var TaskListItem = require("./taskListItem");
+var TaskLine = require("./taskLine");
 
 var TaskList = React.createClass({
 
@@ -14,7 +14,10 @@ var TaskList = React.createClass({
     return (
       <ul className="task-list">
         {tasks.map(function (task){
-          return <TaskListItem task={task} key={task.id} openDetail={comp.openDetail} />;
+          return (
+            <li key={task.id} onClick={comp.openDetail.bind(comp, task.id)} className="task-list-item ">
+              <TaskLine task={task} openDetail={comp.openDetail} />
+            </li>) ;
         })}
         <li className="new-task-item">
           <a href="javascript:void(0)" onClick={this.props.addTask}></a>
