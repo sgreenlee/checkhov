@@ -1,7 +1,8 @@
 class Api::MembersController < ApplicationController
 
     def index
-      @members = current_user.teams.find(params[:team_id]).members.all
+      @team = current_user.teams.find(params[:team_id])
+      @members = @team.members.all
       render :index
     end
 

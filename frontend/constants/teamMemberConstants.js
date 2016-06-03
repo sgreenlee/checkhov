@@ -1,0 +1,3 @@
+module.exports = {
+  RECEIVE_ALL_MEMBERS: "RECEIVE_ALL_MEMBERS"
+};

@@ -1,6 +1,6 @@
 var Store = require("flux/utils").Store;
 var AppDispatcher = require("../dispatcher/dispatcher");
-var TeamMembershipConstants = require("../constants/teamMembershipConstants");
+var TeamMemberConstants = require("../constants/teamMemberConstants");
 
 var _currentTeam = null;
 var _members = {};
@@ -40,7 +40,12 @@ TeamMemberStore.getErrors = function () {
 };
 
 TeamMemberStore.__onDispatch = function (payload) {
-  
+  switch (payload.actionType) {
+    case (TeamMemberConstants.RECEIVE_ALL_MEMBERS):
+      _currentTeam = payload.teamId;
+      _receiveAllMembers(payload.members);
+      TeamMemberStore.__emitChange();
+  }
 };
 
 module.exports = TeamMemberStore;

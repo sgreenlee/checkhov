@@ -1,6 +1,7 @@
 var React = require("react");
 var TeamStore = require("../stores/teamStore");
 var TeamActions = require("../actions/teamActions");
+var TeamMemberActions = require("../actions/teamMemberActions");
 var TeamMemberStore = require("../stores/teamMemberStore");
 
 var TeamHome = React.createClass({
