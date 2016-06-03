@@ -60,6 +60,14 @@ var ServerActions = {
       actionType: TaskConstants.ERROR,
       errors: errors
     });
+  },
+
+  receiveTeamMembers: function (team) {
+    AppDispatcher.dispatch({
+      actionType: TeamMemberConstants.RECEIVE_ALL_MEMBERS,
+      teamId: team.id,
+      tasks: team.tasks
+    });
   }
 
 };

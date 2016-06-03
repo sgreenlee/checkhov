@@ -3,6 +3,8 @@ var TaskStore = require("../stores/taskStore");
 var TaskLine = require("./taskLine");
 var TaskActions = require("../actions/taskActions");
 var TaskDescription = require("./taskDescription");
+var TaskAssignmentSetter = require("./taskAssignmentSetter");
+var TaskDueDateSetter = require("./taskDueDateSetter");
 
 var TaskDetail = React.createClass({
   contextTypes: {
@@ -44,8 +46,8 @@ var TaskDetail = React.createClass({
       <section className="task-detail-container">
         <div className="header">
           <a onClick={this.closeDetail} className="x-icon"></a>
-          <TaskAssignmentSetter />
-          <TaskDueDateSetter />
+          <TaskAssignmentSetter task={task} />
+          <TaskDueDateSetter task={task}/>
         </div>
         <div className="project-info"></div>
         <TaskLine task={task} />
