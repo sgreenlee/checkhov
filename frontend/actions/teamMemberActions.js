@@ -1,4 +1,4 @@
-var TeamMemberApiUtil = require("../util/TeamMemberApiUtil");
+var TeamMemberApiUtil = require("../util/teamMemberApiUtil");
 
 var TeamMemberActions = {
   fetchMembers: TeamMemberApiUtil.fetchMembers
