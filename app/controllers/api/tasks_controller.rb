@@ -12,9 +12,20 @@ class Api::TasksController < ApplicationController
     if @task.save
       render "api/tasks/show"
     else
-      render json: { errors: @task.errors.full_messages }
+      render json: { errors: @task.errors.full_messages }, status: 422
     end
   end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      render  "api/tasks/show"
+    else
+      render json: { errors: @task.errors.full_messages }, status: 422
+    end
+  end
+
+
 
   private
 

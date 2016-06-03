@@ -18,7 +18,7 @@ function _receiveAllTasks(team_id, tasks) {
 }
 
 function _receiveTask(task) {
-  _task[task.id] = task;
+  _tasks[task.id] = task;
   _errors = [];
 }
 
@@ -28,19 +28,19 @@ function _setErrors(errors) {
 
 TaskStore.all = function() {
   return Object.keys(_tasks).map( function (taskId){ return _tasks[taskId]; });
-}
+};
 
 TaskStore.find = function(id) {
   return _tasks[id];
-}
+};
 
 TaskStore.findByProject = function (projectId) {
-  return TaskStore.all.filter( function (task) { return task.project_id === projectId });
-},
+  return TaskStore.all.filter( function (task) { return task.project_id === projectId; });
+};
 
 TaskStore.getCurrentTeam = function () {
   return _currentTeam;
-},
+};
 
 TaskStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
@@ -48,7 +48,14 @@ TaskStore.__onDispatch = function (payload) {
       _receiveAllTasks(payload.teamId, payload.tasks);
       TaskStore.__emitChange();
       break;
+    case TaskConstants.RECEIVE_TASK:
+      // ignore tasks that belong to currently loaded team
+      if (payload.task.team_id === _currentTeam) {
+        _receiveTask(payload.task);
+        TaskStore.__emitChange();
+      }
+      break;
   }
-}
+};
 
 module.exports = TaskStore;

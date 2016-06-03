@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
 
     resources :teams, only: [:create, :update, :index, :show] do
-
       resources :members, only: [:index, :create]
       resources :tasks, only: [:index, :create]
       resources :projects, only: [:index, :create]
-
     end
+
+    resources :tasks, only: [:update, :destroy]
 
   end
 end

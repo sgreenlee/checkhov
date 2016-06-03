@@ -1,6 +1,6 @@
 var React = require("react");
 var TaskStore = require("../stores/taskStore");
-var TeamStore = require("../stores/teamStore")
+var TeamStore = require("../stores/teamStore");
 var TaskActions = require("../actions/taskActions");
 var TaskList = require("./taskList");
 
@@ -34,6 +34,15 @@ var TeamView = React.createClass({
     this.context.router.push({ pathname: path});
   },
 
+  addTask: function () {
+    var tasks = this.state.tasks.slice();
+    var newTask = {
+      team_id: this.props.params.teamId,
+      project_id: this.props.params.projectId };
+    tasks.push(newTask);
+    this.setState({ tasks: tasks});
+  },
+
   render: function() {
     var team = this.props.team;
     return (
@@ -44,14 +53,17 @@ var TeamView = React.createClass({
       <section id="content-pane">
         <section className="task-list-container">
           <div className="header">
-            <button>Add Task</button>
+            <button onClick={this.addTask}>Add Task</button>
           </div>
-          <TaskList tasks={this.state.tasks} openDetail={this.openDetail} />
+          <TaskList
+            tasks={this.state.tasks}
+            openDetail={this.openDetail}
+            addTask={this.addTask}/>
         </section>
         {this.props.children}
       </section>
     </div>
-  )}
+  );}
 
 });
 

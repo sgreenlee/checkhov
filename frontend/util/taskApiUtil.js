@@ -17,6 +17,44 @@ var TaskApiUtil = {
         }
       }
     });
+  },
+
+  updateTask: function (task) {
+    console.log("making Api call to update task");
+    $.ajax({
+      type: "PATCH",
+      url: "/api/tasks/" + task.id,
+      dataType: "json",
+      data: { task: task },
+      success: function (task) {
+        console.log("task updated successfully");
+        ServerActions.receiveTask(task);
+      },
+      error: function (resp) {
+        var errors = resp.responseJSON.errors;
+        if (errors) {
+          ServerActions.receiveTaskErrors(errors);
+        }
+      }
+    });
+  },
+
+  createTask: function (task) {
+    $.ajax({
+      type: "POST",
+      url: "/api/teams/" + task.team_id + "/tasks",
+      dataType: "json",
+      data: {task: task},
+      success: function (task) {
+        ServerActions.receiveTask(task);
+      },
+      error: function (data) {
+        var errors = data.responseJSON.errors;
+        if (errors) {
+          ServerActions.receiveTaskErrors(errors);
+        }
+      }
+    });
   }
 
 };

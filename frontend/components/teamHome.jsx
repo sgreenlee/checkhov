@@ -5,11 +5,11 @@ var TeamActions = require("../actions/teamActions");
 var TeamHome = React.createClass({
 
   getInitialState: function() {
-    return {team: TeamStore.find(this.props.params.teamId) || {}}
+    return {team: TeamStore.find(this.props.params.teamId) || {}};
   },
 
   componentDidMount: function () {
-    this.listener = TeamStore.addListener(this.teamUpdate)
+    this.listener = TeamStore.addListener(this.teamUpdate);
     TeamActions.getTeam(this.props.params.teamId);
   },
 
@@ -19,7 +19,7 @@ var TeamHome = React.createClass({
 
   render: function() {
 
-    var team = this.state.team
+    var team = this.state.team;
 
     return (
       <div id="team-home-component">

@@ -46,6 +46,20 @@ var ServerActions = {
       teamId: team.id,
       tasks: team.tasks
     });
+  },
+
+  receiveTask: function (task) {
+    AppDispatcher.dispatch({
+      actionType: TaskConstants.RECEIVE_TASK,
+      task: task
+    });
+  },
+
+  receiveTaskErrors: function (errors) {
+    AppDispatcher.dispatch({
+      actionType: TaskConstants.ERROR,
+      errors: errors
+    });
   }
 
 };

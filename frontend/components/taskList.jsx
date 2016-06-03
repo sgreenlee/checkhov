@@ -14,10 +14,13 @@ var TaskList = React.createClass({
     return (
       <ul className="task-list">
         {tasks.map(function (task){
-          return <TaskListItem task={task} key={task.id} openDetail={comp.openDetail} />
+          return <TaskListItem task={task} key={task.id} openDetail={comp.openDetail} />;
         })}
+        <li className="new-task-item">
+          <a href="javascript:void(0)" onClick={this.props.addTask}></a>
+        </li>
       </ul>
-    )
+    );
   }
 
 });
