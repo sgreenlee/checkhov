@@ -4,6 +4,18 @@ var TeamStore = require("../stores/teamStore");
 var TaskActions = require("../actions/taskActions");
 var TaskList = require("./taskList");
 
+var TASK_FILTERS = {
+  "All Tasks": function (task) {
+    return true;
+  },
+  "Incomplete Tasks": function (task) {
+      return !task.completed;
+  },
+  "Completed Tasks": function (task) {
+    return task.completed;
+  }
+};
+
 var TeamView = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -12,7 +24,7 @@ var TeamView = React.createClass({
   getInitialState: function() {
     var tasks = TaskStore.getCurrentTeam() === this.props.params.teamId ?
       TaskStore.all() : [];
-    return { tasks: tasks };
+    return { tasks: tasks, filter: "All Tasks" };
   },
 
   componentDidMount: function () {
@@ -24,6 +36,11 @@ var TeamView = React.createClass({
     if (TaskStore.getCurrentTeam() === parseInt(this.props.params.teamId)) {
       this.setState({tasks: TaskStore.all()});
     }
+  },
+
+  setFilter: function (filter) {
+
+    this.setState({ filter: filter });
   },
 
   openDetail: function (id) {
@@ -54,8 +71,22 @@ var TeamView = React.createClass({
         <section className="task-list-container">
           <div className="header">
             <button onClick={this.addTask}>Add Task</button>
+            <div className="task-filter">
+              <div className="dropdown-link">
+                View: {this.state.filter}
+              </div>
+              <div className="dropdown">
+                <h6>Recommended Views</h6>
+                <ul>
+                  <li><a onClick={this.setFilter.bind(this, "Incomplete Tasks")}>Incomplete Tasks</a></li>
+                  <li><a onClick={this.setFilter.bind(this, "Completed Tasks")}>Completed Tasks</a></li>
+                  <li><a onClick={this.setFilter.bind(this, "All Tasks")}>All Tasks</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
           <TaskList
+            filter={TASK_FILTERS[this.state.filter]}
             tasks={this.state.tasks}
             openDetail={this.openDetail}
             addTask={this.addTask}/>

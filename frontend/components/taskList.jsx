@@ -9,11 +9,12 @@ var TaskList = React.createClass({
 
 
   render: function() {
+    var filter = this.props.filter;
     var comp = this;
     var tasks = this.props.tasks || [];
     return (
       <ul className="task-list">
-        {tasks.map(function (task){
+        {tasks.filter(filter).map(function (task){
           return (
             <li key={task.id} onClick={comp.openDetail.bind(comp, task.id)} className="task-list-item ">
               <TaskLine task={task} openDetail={comp.openDetail} />

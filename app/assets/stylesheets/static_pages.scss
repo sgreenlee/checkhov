@@ -458,6 +458,74 @@ footer h4 {
         font-size: 13px;
 
       }
+
+      .task-filter {
+        cursor: pointer;
+        position: relative;
+        float: right;
+        display: block;
+        color: #898E95;
+        font-size: 14px;
+      }
+
+      .dropdown-link {
+        border-bottom: 1px dotted #898E95;
+        margin: 2px;
+      }
+
+      .dropdown-link:after {
+        content: "\02C7";
+        font-size: 18px;
+        position: relative;
+        top: 8px;
+        left: 5px;
+      }
+
+      .task-filter:hover .dropdown {
+        display: block;
+      }
+
+      .dropdown {
+        display: none;
+        opacity: 100;
+        position: absolute;
+        top: 100%;
+        right: 0px;
+        width: 200px;
+        background-color: white;
+        z-index: 10;
+        border-radius: 3px;
+        border: 1px solid #898E95;
+
+        h6 {
+          text-transform: uppercase;
+          font-size: 11px;
+          font-weight: normal;
+          margin: 10px;
+        }
+
+        ul {
+          margin: 0px;
+          list-style: none;
+          padding: 0px;
+
+          a {
+            padding: 0px 10px;
+            font-size: 14px;
+            color: #1B2432;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+          }
+
+          a:hover {
+            background-color: #1AAFD0;
+            color: white;
+          }
+        }
+
+      }
     }
   }
 

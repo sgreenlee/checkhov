@@ -1,14 +1,14 @@
 var React = require("react");
+var TaskApiUtil = require("../util/TaskApiUtil");
 
 var TaskDescription = React.createClass({
 
   getInitialState: function() {
-    return {description: this.props.task.description};
+    return {description: this.props.task.description || ""};
   },
 
   componentWillReceiveProps: function(props) {
-    console.log("receiving props");
-    this.setState({description: props.task.description});
+    this.setState({description: props.task.description || ""});
   },
 
   onChange: function(e) {
@@ -16,12 +16,20 @@ var TaskDescription = React.createClass({
     this.setHeight();
   },
 
+  updateDescription: function (){
+    if (this.state.description && this.state.description != this.props.task.description)
+    TaskApiUtil.updateTask({
+      id: this.props.task.id,
+      description: this.state.description
+    });
+  },
+
   setRef: function (component) {
       this.domNode = component;
   },
 
   setHeight: function () {
-    $(this.domNode).css({'height':'auto','overflow-y':'hidden'}).height(this.domNode.scrollHeight);
+    $(this.domNode).css({'height':'auto','overflow-y':'hidden'}).height(this.domNode.scrollHeight - 25);
   },
 
   render: function() {

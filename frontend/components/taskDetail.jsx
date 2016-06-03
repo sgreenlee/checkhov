@@ -44,6 +44,8 @@ var TaskDetail = React.createClass({
       <section className="task-detail-container">
         <div className="header">
           <a onClick={this.closeDetail} className="x-icon"></a>
+          <TaskAssignmentSetter />
+          <TaskDueDateSetter />
         </div>
         <div className="project-info"></div>
         <TaskLine task={task} />
