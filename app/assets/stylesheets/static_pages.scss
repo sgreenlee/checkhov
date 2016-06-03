@@ -492,6 +492,22 @@ footer h4 {
     vertical-align: middle;
     text-align: center;
     border: 1px solid #B9BCC0;
+    cursor: pointer;
+  }
+
+  .complete-task-button::after {
+    content: "✓";
+  }
+
+  .complete-task-button:hover {
+    color: #3BF7D1;
+    border: 2px solid #3BF7D1;
+  }
+
+  .completed .complete-task-button {
+    background-color: #3BF7D1;
+    color: white;
+    border: 1px solid #E1E2E4;
   }
 
   li {
@@ -517,6 +533,10 @@ footer h4 {
 
   li:hover {
     border: 1px solid #E0E0E0;
+
+    .task-info-container {
+      border: none;
+    }
   }
 }
 

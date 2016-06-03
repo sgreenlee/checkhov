@@ -27,10 +27,18 @@ var TaskListItem = React.createClass({
     }
   },
 
+  toggleComplete: function () {
+    var completed = !this.props.task.completed;
+    TaskActions.updateTask({
+      id: this.props.task.id,
+      completed: completed
+    });
+  },
+
   updateTask: function () {
     TaskActions.updateTask({
       id: this.props.task.id,
-      title: this.state.title,
+      title: this.state.title
     });
   },
 
@@ -41,11 +49,12 @@ var TaskListItem = React.createClass({
   },
 
   render: function() {
+    var completed = this.props.task.completed ? "completed" : "";
     var task = this.props.task;
     return (
-      <li onClick={this.handleClick} className="task-list-item">
+      <li onClick={this.handleClick} className={"task-list-item " + completed}>
         <div className="task-info-container">
-          <span className="complete-task-button">✓</span>
+          <a onClick={this.toggleComplete} className="complete-task-button"></a>
           <textarea onChange={this.onChange} onBlur={this.onBlur} value={this.state.title}></textarea>
         </div>
       </li>
