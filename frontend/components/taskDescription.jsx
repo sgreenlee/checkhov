@@ -1,5 +1,5 @@
 var React = require("react");
-var TaskApiUtil = require("../util/TaskApiUtil");
+var TaskApiUtil = require("../util/taskApiUtil");
 
 var TaskDescription = React.createClass({
 
