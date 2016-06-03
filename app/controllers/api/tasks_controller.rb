@@ -1,6 +1,7 @@
 class Api::TasksController < ApplicationController
 
   def index
+
     @team = Team.find(params[:team_id])
     @tasks = @team.tasks.all || []
     render :index

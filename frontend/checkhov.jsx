@@ -9,7 +9,6 @@ var IndexRoute = ReactRouter.IndexRoute;
 var IndexRedirect = ReactRouter.IndexRedirect;
 var hashHistory = ReactRouter.hashHistory;
 
-
 // Components
 var SplashScreen = require("./components/splashScreen");
 var Welcome = require("./components/welcome");
@@ -19,8 +18,8 @@ var AccountSetup = require("./components/accountSetup");
 var ProfileSetup = require("./components/profileSetup");
 var TeamSetup = require("./components/teamSetup");
 var TeamHome = require("./components/teamHome");
-var TeamTaskList = require("./components/teamTaskList");
-var ProjectTaskList = require("./components/projectTaskList");
+var ProjectView = require("./components/projectView");
+var TeamView = require("./components/teamView");
 var TaskDetail = require("./components/taskDetail");
 
 // Stores
@@ -56,12 +55,12 @@ var routes = (
     </Route>
 
     <Route path="teams/:teamId" component={TeamHome}>
-      <IndexRedirect to="all" />
-      <Route path="all" component={TeamTaskList}>
-        <Route path="t/:taskId" component={TaskDetail} />
+      <IndexRedirect to="list" />
+      <Route path="list" component={TeamView}>
+        <Route path=":taskId" component={TaskDetail} />
       </Route>
-      <Route path="p/:projectId" component={ProjectTaskList}>
-        <Route path="t/:taskId" component={TaskDetail} />
+      <Route path=":projectId/list" component={ProjectView}>
+        <Route path=":taskId" component={TaskDetail} />
       </Route>
     </Route>
   </Route>
@@ -76,3 +75,4 @@ document.addEventListener("DOMContentLoaded", function() {
 window.SessionApiUtil = require("./util/sessionApiUtil");
 window.UserApiUtil = require("./util/userApiUtil");
 window.TeamApiUtil = require("./util/teamApiUtil");
+window.TaskApiUtil = require("./util/taskApiUtil");

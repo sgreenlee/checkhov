@@ -415,6 +415,10 @@ footer h4 {
 
 }
 
+.project-view {
+  height: calc(100% - 40px);
+}
+
 #project-header {
   height: 65px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px 1px;
@@ -428,11 +432,11 @@ footer h4 {
 }
 
 #content-pane {
-
-  height: calc(100% - 105px);
+  height: calc(100% - 65px);
   padding: 15px 30px 0px 30px;
 
   .task-list-container {
+    padding: 15px 30px 0px 30px;
     border-radius: 3px 3px 0 0;
     height: 100%;
     box-shadow: rgba(0, 0, 0, 0.298039) 0.6px 1px 3px 1px;
@@ -442,8 +446,6 @@ footer h4 {
     width: calc(55% - 15px);
 
     .header {
-      padding: 15px 30px 0px 30px;
-
       button {
         background-color: white;
         color: $light-blue;
@@ -451,7 +453,7 @@ footer h4 {
         height: 30px;
         padding: 0px 10px;
         font-size: 13px;
-        
+
       }
     }
   }
@@ -470,5 +472,30 @@ footer h4 {
     float: none;
     margin: auto;
     width: 900px;
+  }
+}
+.task-list {
+  list-style: none;
+  padding: 0px;
+
+  .complete-task-button {
+    margin: 5px 10px;
+    color: #E1E2E4;
+    display: inline-block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #B9BCC0;
+  }
+
+  li {
+    height: 35px;
+    width: 100%;
+    font-size: 14px;
+    border-top: 1px solid #E5E5E5;
+    line-height: 35px;
   }
 }

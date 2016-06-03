@@ -40,11 +40,11 @@ var ServerActions = {
     });
   },
 
-  receiveAllTasks: function (data) {
+  receiveAllTasks: function (team) {
     AppDispatcher.dispatch({
       actionType: TaskConstants.RECEIVE_ALL_TASKS,
-      teamId: data.team.team_id,
-      tasks: data.tasks || []
+      teamId: team.id,
+      tasks: team.tasks
     });
   }
 

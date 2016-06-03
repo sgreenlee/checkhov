@@ -2,12 +2,12 @@ var React = require("react");
 var TaskStore = require("../stores/taskStore");
 var TaskActions = require("../actions/taskActions");
 
-var TeamTaskList = React.createClass({
+var ProjectView = React.createClass({
 
   getInitialState: function() {
     var tasks = TaskStore.getCurrentTeam() === this.props.params.teamId ?
       TaskStore.all() : [];
-    return { tasks: tasks };
+    return { tasks: tasks, team: TeamStore };
   },
 
   componentDidMount: function () {
@@ -23,17 +23,21 @@ var TeamTaskList = React.createClass({
 
   render: function() {
     return (
-
-    <section id="content-pane">
-      <section className="task-list-container">
-        <div className="header">
-          <button>Add Task</button>
-        </div>
+    <div className="project-view">
+      <header id="project-header">
+        <h1>My tasks in {team.name}</h1>
+      </header>
+        <section id="content-pane">
+        <section className="task-list-container">
+      <div className="header">
+        <button>Add Task</button>
+      </div>
       </section>
-      {this.props.children}
-    </section>
+        {this.props.children}
+      </section>
+    </div>
   )}
 
 });
 
-module.exports = TeamTaskList;
+module.exports = ProjectView;

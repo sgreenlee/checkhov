@@ -40,10 +40,7 @@ var TeamHome = React.createClass({
               </a>
             </nav>
           </header>
-          <header id="project-header">
-            <h1>My tasks in {team.name}</h1>
-          </header>
-            { this.props.children }
+          {this.props.children && React.cloneElement(this.props.children, {team: this.state.team })}
         </section>
 
       </div>
