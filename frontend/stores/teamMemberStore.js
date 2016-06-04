@@ -39,6 +39,14 @@ TeamMemberStore.getErrors = function () {
   return _errors.slice();
 };
 
+TeamMemberStore.search = function (text) {
+  return TeamMemberStore.all().filter( function (member) {
+    return (member.first_name.startsWith(text) ||
+              member.last_name.startsWith(text) ||
+              member.email.startsWith(text));
+  });
+};
+
 TeamMemberStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case (TeamMemberConstants.RECEIVE_ALL_MEMBERS):

@@ -1,0 +1,207 @@
+@import "member_list_item";
+
+.assignment-setter {
+
+  cursor: pointer;
+  color: #898E95;
+  opacity: 1;
+
+  position: absolute;
+  left: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+
+  height: 36px;
+  width: 130px;
+
+  border-radius: 18px;
+  line-height: 36px;
+
+  border: 1px solid transparent;
+
+  h6 {
+    position: absolute;
+    height: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    width: 80px;
+    margin-left: 40px;
+    font-size: 14px;
+  }
+
+  .avatar {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px dashed #898E95;
+  }
+
+  .unassign-button {
+    display: none;
+  }
+}
+
+
+.assignment-setter.assigned {
+
+  .avatar {
+    border: 1px solid #4186e0;
+    background-color: #4186e0;
+  }
+
+  .unassign-button {
+    z-index: 15;
+    display: block;
+    position: absolute;
+    right: 4px;
+    top: 10px;
+    background-color: #898E95;
+
+    cursor: pointer;
+
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    line-height: 13px;
+    text-align: center;
+    vertical-align: middle;
+
+    box-shadow: rgb(255, 255, 255) -5px 0px 10px 5px;
+  }
+
+  .unassign-button:after {
+    content: "⨯";
+    color: white;
+  }
+
+  .unassign-button:hover {
+    background-color: #02ceff;
+  }
+
+  .unassign-button:hover .tooltip:before {
+    content: attr(content);
+    opacity: .8;
+    line-height: 36px;
+    border-radius: 4px;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    display: block;
+    background-color: #2E3C54;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 36px;
+    top: calc(100% + 5px);
+  }
+
+  .unassign-button:hover .tooltip:after {
+    opacity: .8;
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-top: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 5px solid  #2E3C54;
+  }
+}
+
+.assignment-setter.unassigned:hover {
+  border: 1px dashed #02ceff;
+  color: #02ceff;
+  margin-left: 0px;
+}
+
+.assignment-setter.assigned:hover {
+  box-shadow: 0 0 0 3px #02ceff;
+  color: #02ceff;
+}
+
+.assignment-setter.expanded {
+  width: 230px;
+  height: 42px;
+  border-radius: 3px;
+  left: 15px;
+  border: 1px solid #898E95;
+
+  .avatar {
+    left: 22px;
+  }
+
+  input {
+    position: absolute;
+    height: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    width: 180px;
+    margin-left: 60px;
+    font-size: 14px;
+    outline: none;
+    resize: none;
+    border: none;
+  }
+
+  .search-results {
+    position: absolute;
+    top: calc(100% + 1px);
+    width: 230px;
+    border-radius: 3px;
+    left: -1px;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid #898E95;
+    z-index: 10;
+
+    ul {
+      list-style: none;
+      padding: 0px;
+      margin: 0;
+
+      .member-list-item {
+
+        height: 50px;
+        position: relative;
+
+        .avatar{
+          left: 20px;
+        }
+
+        .member-info {
+          margin-left: 70px;
+
+          .name {
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            vertical-align: baseline;
+          }
+
+          .email {
+            height: 20px;
+            line-height: 20px;
+            font-size: 11px;
+            vertical-align: top;
+          }
+        }
+
+      }
+
+    }
+  }
+}

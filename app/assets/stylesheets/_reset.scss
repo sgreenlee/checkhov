@@ -1,0 +1,17 @@
+html, body, header, section, footer, h1, h2, h3, h4, h5, h6, p, form, label, a,
+input, textarea, div {
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+
+  background: transparent;
+
+  font: inherit;
+  color: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+
+  box-sizing: border-box;
+  text-decoration: none;
+
+}

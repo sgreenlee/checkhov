@@ -25,7 +25,7 @@ var TeamHome = React.createClass({
   },
 
   teamMembersUpdate: function () {
-    this.setState({team: TeamMemberStore.all() });
+    this.setState({members: TeamMemberStore.all() });
   },
 
   render: function() {
