@@ -9,8 +9,6 @@
   src: url(/assets/Proxima-Nova-Regular.otf) format("truetype");
 }
 
-@import "reset";
-@import "assignment_setter";
 
 $primary-background: #FF6D92;
 $light-blue: #1AAFD0;
@@ -647,7 +645,7 @@ footer h4 {
 
   .header {
     position: relative;
-    padding: 15px 30px;
+    padding: 0px 30px;
     height: 60px;
     border-bottom: 1px solid #B9BCC0;
     z-index: 10000;

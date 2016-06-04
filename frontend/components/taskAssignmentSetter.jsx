@@ -61,7 +61,6 @@ var TaskAssignmentSetter = React.createClass({
 
 
   render: function() {
-    console.log("rendering");
     var comp = this;
     var assignee = this.state.assignee;
     var name = "Unassigned";

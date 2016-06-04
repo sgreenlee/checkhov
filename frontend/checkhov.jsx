@@ -76,4 +76,5 @@ window.SessionApiUtil = require("./util/sessionApiUtil");
 window.UserApiUtil = require("./util/userApiUtil");
 window.TeamApiUtil = require("./util/teamApiUtil");
 window.TaskApiUtil = require("./util/taskApiUtil");
-window.TeamStore = TeamStore; 
+window.TeamStore = TeamStore;
+window.TaskStore = TaskStore;

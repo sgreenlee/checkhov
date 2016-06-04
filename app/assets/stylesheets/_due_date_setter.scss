@@ -1,8 +1,8 @@
-@import "member_list_item";
 
-.assignment-setter {
+.due-date-setter {
 
   float: left;
+  left: 30px;
   cursor: pointer;
   color: #898E95;
   opacity: 1;
@@ -11,7 +11,7 @@
   background: white;
 
   height: 36px;
-  width: 130px;
+  width: 145px;
   margin: 12px 0px;
 
   border-radius: 18px;
@@ -37,6 +37,9 @@
     left: 3px;
     width: 30px;
     height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
     border-radius: 50%;
     border: 1px dashed #898E95;
   }
@@ -47,12 +50,7 @@
 }
 
 
-.assignment-setter.assigned {
-
-  .avatar {
-    border: 1px solid #4186e0;
-    background-color: #4186e0;
-  }
+.due-date-setter.assigned {
 
   .unassign-button {
     z-index: 15;
@@ -120,30 +118,30 @@
   }
 }
 
-.assignment-setter:hover {
+.due-date-setter:hover {
   box-shadow: 0 0 0 3px #02ceff;
   color: #02ceff;
 }
 
-.assignment-setter.unassigned:hover {
+.due-date-setter.unassigned:hover {
   border: 1px dashed #02ceff;
   color: #02ceff;
   margin-left: 0px;
 }
 
-.assignment-setter.expanded:hover {
+.due-date-setter.expanded:hover {
   color: #898E95;
   box-shadow: none;
 }
 
-.assignment-setter.expanded {
+.due-date-setter.expanded {
   width: 230px;
   height: 42px;
-  margin: 9px 0px;
+  margin: 9px 0;
   border-radius: 3px;
-  left: -20px;
   border: 1px solid #898E95;
   z-index: 20;
+  left: 10px;
 
   .avatar {
     left: 22px;
@@ -163,10 +161,11 @@
     border: none;
   }
 
-  .search-results {
+  .calendar {
+    cursor: auto;
     position: absolute;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     top: calc(100% + 1px);
     width: 230px;
     border-radius: 3px;
@@ -175,37 +174,89 @@
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid #898E95;
     z-index: 10;
+    text-transform: uppercase;
+    font-weight: light;
     list-style: none;
 
-    .member-list-item {
-      height: 50px;
+    .select-bar {
       position: relative;
+      height: 30px;
+      text-align: center;
 
-      .avatar{
-        left: 20px;
+      a {
+        cursor: pointer;
+        font-size: 22px;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+        line-height: 20px;
+        vertical-align: middle;
+        top: 0px;
       }
 
-      .member-info {
-        margin-left: 70px;
+      p {
+        height: 30px;
+        font-size: 13px;
+        text-transform: capitalize;
+        width: 100px;
+        margin: 0 auto;
+      }
 
-        .name {
-          height: 30px;
-          line-height: 30px;
-          font-size: 14px;
-          vertical-align: baseline;
-        }
+      a:hover {
+        color: #1AAFD0;
+        background-color: #E0E0E0;
+      }
 
-        .email {
-          height: 20px;
-          line-height: 20px;
-          font-size: 11px;
-          vertical-align: top;
-        }
+      .left {
+        left: 0px;
+      }
+
+      .right {
+        right: 0px;
+      }
+
+      .right:after {
+        content: "›"
+      }
+
+      .left:after {
+        content: "‹"
       }
     }
-  }
 
-  .search-results:empty {
-    display: none;
+    .calendar-body {
+      margin: 0px auto;
+      padding: 4px;
+
+      div {
+        font-size: 11px;
+        float: left;
+        text-align: center;
+        height: 28px;
+        width: 28px;
+      }
+
+      .cal-header {
+        border-bottom: 1px solid #898E95;
+        vertical-align: bottom;
+      }
+
+      .cal-day {
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        vertical-align: middle;
+        margin: 4px;
+      }
+
+      .cal-day:hover {
+
+        border-radius: 50%;
+        border: 1px solid gray;
+        background-color: light-blue;
+      }
+    }
   }
 }
