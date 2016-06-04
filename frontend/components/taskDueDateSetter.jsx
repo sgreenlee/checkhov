@@ -63,7 +63,6 @@ var TaskDueDateSetter = React.createClass({
   },
 
   componentWillReceiveProps: function (props) {
-    console.log("receiving props!");
     var baseDate = props.task.due_date;
     baseDate = baseDate ? this.parseDueDate(baseDate) : new Date();
     var year = baseDate.getYear() + 1900;
@@ -137,7 +136,7 @@ var TaskDueDateSetter = React.createClass({
   },
 
   serializeDueDate: function () {
-    if (!this.state.dueDate) return undefined:
+    if (!this.state.dueDate) return undefined;
     var dueDate = this.state.dueDate;
     var date = this.state.dueDate.date;
     var month = this.state.dueDate.month;
@@ -178,7 +177,6 @@ var TaskDueDateSetter = React.createClass({
   },
 
   render: function() {
-    console.log("rendering!");
     var comp = this;
     var formattedDueDate = this.formatDueDate();
 

@@ -2,6 +2,7 @@ var AppDispatcher = require("../dispatcher/dispatcher");
 var SessionConstants = require("../constants/sessionConstants");
 var TeamConstants = require("../constants/teamConstants");
 var TaskConstants = require("../constants/taskConstants");
+var ProjectConstants = require("../constants/projectConstants");
 var TeamMemberConstants = require("../constants/teamMemberConstants");
 
 var ServerActions = {
@@ -69,7 +70,22 @@ var ServerActions = {
       id: team.id,
       members: team.members
     });
-  }
+  },
+
+  receiveProject: function (project) {
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.RECEIVE_PROJECT,
+      project: project
+    });
+  },
+
+  receiveAllProjects: function (team) {
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.RECEIVE_ALL_PROJECTS,
+      teamId: team.id,
+      projects: team.projects
+    });
+  },
 
 };
 

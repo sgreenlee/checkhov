@@ -39,6 +39,10 @@ TeamMemberStore.getErrors = function () {
   return _errors.slice();
 };
 
+TeamMemberStore.getCurrentTeam = function () {
+  return _currentTeam;
+};
+
 TeamMemberStore.search = function (text) {
   return TeamMemberStore.all().filter( function (member) {
     return (member.first_name.startsWith(text) ||

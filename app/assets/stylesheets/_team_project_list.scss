@@ -1,0 +1,104 @@
+.project-list-component {
+  margin-top: 100px;
+  padding: 0px 0px;
+
+
+  .project-list {
+    color: #C1CCD1;
+
+    .header {
+      position: relative;
+    }
+
+    h6 {
+      padding: 0 20px;
+      height: 40px;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .plus-icon {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      line-height: 13px;
+      vertical-align: middle;
+      text-align: center;
+      display: block;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      border: 2px solid #C1CCD1;
+    }
+
+    .plus-icon::after {
+      content: "+";
+    }
+
+    ul {
+      list-style: none;
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      padding: 0 20px;
+      height: 30px;
+      line-height: 30px;
+      vertical-align: middle;
+    }
+
+    li:hover {
+      background: #179DBA;
+    }
+
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #a1a4aa;
+    z-index: 9999;
+    opacity: .5;
+  }
+
+  .modal {
+    // display: none;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 530px;
+    background: white;
+    z-index: 10000;
+    border: 1px solid #a1a4aa;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+    border-radius: 3px;
+
+    h4 {
+      padding: 10px 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+      border-bottom: 1px solid #e1e2e4;
+    }
+  }
+
+  .project-modal-group {
+    display: none;
+  }
+
+  .project-modal-group.open {
+    display: block;
+  }
+}

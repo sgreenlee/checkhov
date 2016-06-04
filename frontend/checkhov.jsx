@@ -27,6 +27,7 @@ var SessionStore = require("./stores/sessionStore");
 var TeamStore = require("./stores/teamStore");
 var ProjectStore = require("./stores/projectStore");
 var TaskStore = require("./stores/taskStore");
+var ProjectStore =require("./stores/projectStore");
 
 var App = React.createClass({
   render: function() {
@@ -78,3 +79,4 @@ window.TeamApiUtil = require("./util/teamApiUtil");
 window.TaskApiUtil = require("./util/taskApiUtil");
 window.TeamStore = TeamStore;
 window.TaskStore = TaskStore;
+window.ProjectStore = ProjectStore;

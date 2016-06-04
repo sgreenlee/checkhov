@@ -293,7 +293,6 @@ footer h4 {
 }
 
 #teams-sidebar {
-  position: relative;
   float: left;
   bottom: 0px;
   width: 244px;
@@ -648,7 +647,7 @@ footer h4 {
     padding: 0px 30px;
     height: 60px;
     border-bottom: 1px solid #B9BCC0;
-    z-index: 10000;
+    z-index: 1000;
   }
 
   .project-info {
