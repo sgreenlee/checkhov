@@ -65,10 +65,10 @@ var TaskAssignmentSetter = React.createClass({
     var comp = this;
     var assignee = this.state.assignee;
     var name = "Unassigned";
-    var className = "";
+    var className = this.state.expanded ? " expanded" : "";
     if (assignee) {
       name = assignee.first_name + " " + assignee.last_name;
-      className = " assigned";
+      className = className || " assigned";
     }
 
     var content;
@@ -77,14 +77,12 @@ var TaskAssignmentSetter = React.createClass({
         <div className={"assignment-setter expanded"} ref={this.getNode}>
           <div className="avatar" />
           <input onChange={this.onInput} placeholder="Enter name or email" />
-          <div className="search-results">
-            <ul>
+          <ul className="search-results">
               {this.state.members.map(function(member) {
                 return <MemberListItem key={member.id} member={member}
                     clickHandler={comp.setAssignee.bind(comp, member.id)} />;
               })}
-            </ul>
-          </div>
+          </ul>
         </div>
       );
     } else {
