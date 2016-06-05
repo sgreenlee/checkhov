@@ -3,18 +3,7 @@ var TaskStore = require("../stores/taskStore");
 var TeamStore = require("../stores/teamStore");
 var TaskActions = require("../actions/taskActions");
 var TaskList = require("./taskList");
-
-var TASK_FILTERS = {
-  "All Tasks": function (task) {
-    return true;
-  },
-  "Incomplete Tasks": function (task) {
-      return !task.completed;
-  },
-  "Completed Tasks": function (task) {
-    return task.completed;
-  }
-};
+var TASK_FILTERS = require("../util/taskFilters");
 
 var TeamView = React.createClass({
   contextTypes: {
@@ -32,6 +21,10 @@ var TeamView = React.createClass({
     TaskActions.fetchTasksByTeam(this.props.params.teamId);
   },
 
+  componentWillUnmount: function () {
+    this.listener.remove();
+  },
+
   onUpdate: function () {
     if (TaskStore.getCurrentTeam() === parseInt(this.props.params.teamId)) {
       this.setState({tasks: TaskStore.all()});
@@ -44,18 +37,17 @@ var TeamView = React.createClass({
   },
 
   openDetail: function (id) {
-    var projectId = this.props.params.projectId ?
-      this.props.params.projectId + "/" : "";
+    if (!id) return;
     var teamId = this.props.params.teamId;
-    var path = "teams/" + teamId + "/" + projectId + "list/" + id;
+    var path = "teams/" + teamId + "/list/" + id;
     this.context.router.push({ pathname: path});
   },
 
   addTask: function () {
     var tasks = this.state.tasks.slice();
     var newTask = {
-      team_id: this.props.params.teamId,
-      project_id: this.props.params.projectId };
+      team_id: this.props.params.teamId
+    };
     tasks.push(newTask);
     this.setState({ tasks: tasks});
   },

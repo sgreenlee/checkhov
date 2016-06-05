@@ -35,7 +35,7 @@ TaskStore.find = function(id) {
 };
 
 TaskStore.findByProject = function (projectId) {
-  return TaskStore.all.filter( function (task) { return task.project_id === projectId; });
+  return TaskStore.all().filter( function (task) { return task.project_id === projectId; });
 };
 
 TaskStore.getCurrentTeam = function () {

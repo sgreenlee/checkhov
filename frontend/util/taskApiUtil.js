@@ -40,12 +40,14 @@ var TaskApiUtil = {
   },
 
   createTask: function (task) {
+    console.log("sending ajax request");
     $.ajax({
       type: "POST",
       url: "/api/teams/" + task.team_id + "/tasks",
       dataType: "json",
       data: {task: task},
       success: function (task) {
+        console.log("task created");
         ServerActions.receiveTask(task);
       },
       error: function (data) {

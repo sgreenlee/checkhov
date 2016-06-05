@@ -36,7 +36,7 @@ var TaskDetail = React.createClass({
     var projectId = this.props.params.projectId;
     projectId = projectId ? projectId + "/" : "";
     var teamId = this.props.params.teamId;
-    var path = "/teams/" + teamId + "/" + projectId;
+    var path = "/teams/" + teamId + "/" + projectId + "list";
     this.context.router.push(path);
   },
 
