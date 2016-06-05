@@ -1,5 +1,6 @@
 var React = require("react");
 var MemberListItem = require("./memberListItem");
+var TeamMemberActions = require("../actions/teamMemberActions");
 
 var TeamMemberList = React.createClass({
   contextTypes: {
@@ -23,7 +24,7 @@ var TeamMemberList = React.createClass({
   },
 
   onSubmit: function () {
-    ProjectActions.createProject({email: this.state.newMemberEmail, team_id: this.props.teamId });
+    TeamMemberActions.addMember({email: this.state.newMemberEmail, teamId: this.props.teamId });
   },
 
   render: function() {

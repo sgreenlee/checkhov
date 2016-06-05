@@ -57,6 +57,14 @@ TeamMemberStore.__onDispatch = function (payload) {
       _currentTeam = payload.id;
       _receiveAllMembers(payload.members);
       TeamMemberStore.__emitChange();
+      break;
+
+    case (TeamMemberConstants.RECEIVE_MEMBER):
+      if (payload.id === _currentTeam) {
+        _receiveMember(payload.member);
+        TeamMemberStore.__emitChange();
+      }
+      break;
   }
 };
 

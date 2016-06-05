@@ -88,6 +88,10 @@ button {
   cursor: pointer;
 }
 
+input[type="submit"] {
+  cursor: pointer;
+}
+
 .login {
   background-color: white;
   color: #6a67ce
@@ -383,7 +387,7 @@ footer h4 {
     border-radius: 15px;
   }
 
-  
+
 
 }
 

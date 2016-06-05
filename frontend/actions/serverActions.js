@@ -72,6 +72,14 @@ var ServerActions = {
     });
   },
 
+  receiveTeamMember: function (team) {
+    AppDispatcher.dispatch({
+      actionType: TeamMemberConstants.RECEIVE_MEMBER,
+      id: team.id,
+      member: team.member
+    });
+  },
+
   receiveProject: function (project) {
     AppDispatcher.dispatch({
       actionType: ProjectConstants.RECEIVE_PROJECT,

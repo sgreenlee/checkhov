@@ -14,6 +14,18 @@ var TeamMemberApiUtil = {
      });
   },
 
+  addMember: function (options) {
+    $.ajax({
+      type: "POST",
+      url: "/api/teams/" + options.teamId + "/members",
+      dataType: "json",
+      data: { member: { email: options.email }},
+      success: function(data) {
+        ServerActions.receiveTeamMember(data.team);
+      }
+    });
+  }
+
 
 
 };
