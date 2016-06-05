@@ -51,6 +51,13 @@ var TeamHome = React.createClass({
     ProjectActions.fetchProjects(this.props.params.teamId);
   },
 
+  componentWillUnmount: function () {
+    this.teamListener.remove();
+    this.membersListener.remove();
+    this.projectsListener.remove();
+    this.sessionListener.remove();
+  },
+
   teamUpdate: function () {
     this.setState({team: TeamStore.find(this.props.params.teamId) || {} });
   },
