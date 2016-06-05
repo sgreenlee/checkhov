@@ -7,8 +7,8 @@ var ProjectApiUtil = {
       type: "POST",
       url: "/api/teams/" + project.team_id + "/projects",
       data: { project: project },
-      success: function (project) {
-        ServerActions.receiveProject(project);
+      success: function (data) {
+        ServerActions.receiveProject(data.project);
       },
       error: function (data) {
         var errors = data.responseJSON.errors;

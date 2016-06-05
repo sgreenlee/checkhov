@@ -6,6 +6,8 @@ var _projects = {};
 var _errors = [];
 var _currentTeam = null;
 
+var _lastReceivedTaskId = null;
+
 function _receiveAllProjects(team_id, projects) {
   _currentTeam =  team_id;
   _projects = {};
@@ -16,6 +18,7 @@ function _receiveAllProjects(team_id, projects) {
 }
 
 function _receiveProject(project) {
+  _lastReceivedProjectId = project.id;
   _projects[project.id] = project;
   _errors = [];
 }
@@ -42,9 +45,14 @@ ProjectStore.getCurrentTeam = function () {
   return _currentTeam;
 };
 
+ProjectStore.getLastReceivedProject = function () {
+  return _lastReceivedProjectId;
+};
+
 ProjectStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case ProjectConstants.RECEIVE_ALL_PROJECTS:
+      _lastReceivedProjectId = null;
       _receiveAllProjects(payload.teamId, payload.projects);
       ProjectStore.__emitChange();
       break;

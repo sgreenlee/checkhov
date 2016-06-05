@@ -24,6 +24,7 @@ var TeamProjectList = React.createClass({
 
   onSubmit: function () {
     ProjectActions.createProject({title: this.state.newTeamName, team_id: this.props.teamId });
+    this.closeModal();
   },
 
   render: function() {

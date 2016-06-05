@@ -72,6 +72,12 @@ var TeamHome = React.createClass({
     if (ProjectStore.getCurrentTeam() === parseInt(this.props.params.teamId)) {
       this.setState({projects: ProjectStore.all() });
     }
+    if (ProjectStore.getLastReceivedProject()) {
+      var teamId = this.props.params.teamId;
+      var projectId = ProjectStore.getLastReceivedProject();
+      var path = "/teams/" + teamId + "/" + projectId + "/list";
+      this.context.router.push(path);
+    }
   },
 
   exitOnLogout: function () {
