@@ -54,7 +54,7 @@ TeamMemberStore.search = function (text) {
 TeamMemberStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case (TeamMemberConstants.RECEIVE_ALL_MEMBERS):
-      _currentTeam = payload.teamId;
+      _currentTeam = payload.id;
       _receiveAllMembers(payload.members);
       TeamMemberStore.__emitChange();
   }

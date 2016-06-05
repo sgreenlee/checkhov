@@ -30,6 +30,8 @@ var TaskStore = require("./stores/taskStore");
 var ProjectStore =require("./stores/projectStore");
 
 var App = React.createClass({
+
+
   render: function() {
     return <div id="app-component">{ this.props.children }</div>;
   }

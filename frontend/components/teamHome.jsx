@@ -4,9 +4,11 @@ var TeamActions = require("../actions/teamActions");
 var TeamMemberActions = require("../actions/teamMemberActions");
 var TeamMemberStore = require("../stores/teamMemberStore");
 var ProjectStore = require("../stores/projectStore");
+var SessionStore = require("../stores/sessionStore");
 var TeamProjectList = require("./teamProjectList");
 var TeamMemberList = require("./teamMemberList");
 var ProjectActions = require("../actions/projectActions");
+var AccountDropdown = require("./accountDropdown");
 
 var TeamHome = React.createClass({
   contextTypes: {
@@ -31,16 +33,19 @@ var TeamHome = React.createClass({
   },
 
   componentWillReceiveProps: function (props) {
-    var team = TeamStore.find(props.params.teamId) || {};
-    this.setState({team: team, members: [], projects: []});
-    TeamMemberActions.fetchMembers(props.params.teamId);
-    ProjectActions.fetchProjects(props.params.teamId);
+    if (this.props.teamId !== props.teamId) {
+      var team = TeamStore.find(props.params.teamId) || {};
+      this.setState({team: team, members: [], projects: []});
+      TeamMemberActions.fetchMembers(props.params.teamId);
+      ProjectActions.fetchProjects(props.params.teamId);
+    }
   },
 
   componentDidMount: function () {
     this.teamListener = TeamStore.addListener(this.teamUpdate);
     this.membersListener = TeamMemberStore.addListener(this.teamMembersUpdate);
     this.projectsListener = ProjectStore.addListener(this.projectsUpdate);
+    this.sessionListener = SessionStore.addListener(this.exitOnLogout);
     TeamActions.getTeam(this.props.params.teamId);
     TeamMemberActions.fetchMembers(this.props.params.teamId);
     ProjectActions.fetchProjects(this.props.params.teamId);
@@ -62,6 +67,13 @@ var TeamHome = React.createClass({
     }
   },
 
+  exitOnLogout: function () {
+    if (!SessionStore.getCurrentUser()) {
+      this.context.router.push("/welcome");
+    }
+  },
+
+
   createProject: function () {
 
   },
@@ -80,8 +92,8 @@ var TeamHome = React.createClass({
       <div id="team-home-component">
         <section id="teams-sidebar" className="clearfix">
           <h3>checkhov</h3>
-          <TeamProjectList teamId={this.props.params.teamId} projects={projects} newProject={this.createProject} />
           <TeamMemberList teamId={this.props.params.teamId} members={members} newMember={this.addMember}/>
+          <TeamProjectList teamId={this.props.params.teamId} projects={projects} newProject={this.createProject} />
         </section>
         <section id="teams-main" className="clearfix">
           <header id="top-bar">
@@ -91,11 +103,7 @@ var TeamHome = React.createClass({
               <a className="icon-dropdown" href="javascrip:void(0)"></a>
             </nav>
             <nav id="search"></nav>
-            <nav id="account-nav">
-              <a className="account-dropdown" href="javascript:void(0)">{this.state.team.name}
-                <span className="user-avatar"></span>
-              </a>
-            </nav>
+            <AccountDropdown team={team}/>
           </header>
           {this.props.children && React.cloneElement(this.props.children, {team: this.state.team })}
         </section>

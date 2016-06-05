@@ -27,6 +27,7 @@ var TeamProjectList = React.createClass({
   },
 
   render: function() {
+    var teamId = this.props.teamId;
     return (
       <div className="project-list-component">
         <div className="project-list">
@@ -36,7 +37,11 @@ var TeamProjectList = React.createClass({
           </div>
           <ul>
             { this.props.projects && this.props.projects.map(function (project) {
-              return (<li>{project.title}</li>);
+              return (
+                <li key={project.id}>
+                  <a href={"#/teams/" + teamId + "/" + project.id + "/list" }>{project.title}</a>
+                </li>
+              );
             })}
           </ul>
         </div>
