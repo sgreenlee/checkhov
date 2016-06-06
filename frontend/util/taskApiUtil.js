@@ -60,12 +60,13 @@ var TaskApiUtil = {
   },
 
   getTask: function (taskId) {
+    console.log("getTask api call");
     $.ajax({
       type: "GET",
       url: "/api/tasks/" + taskId,
       dataType: "json",
-      success: function (task) {
-        ServerActions.receiveTask(task);
+      success: function (data) {
+        ServerActions.receiveTask(data.task);
       }
     });
   },

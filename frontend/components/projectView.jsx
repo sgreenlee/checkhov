@@ -32,7 +32,6 @@ var ProjectView = React.createClass({
   },
 
   componentWillReceiveProps: function (props) {
-    console.log("receiving props");
     if (this.props.params.projectId !== props.params.projectId) {
       TaskActions.fetchTasksByTeam(props.params.teamId);
       ProjectActions.fetchProjects(props.params.teamId);

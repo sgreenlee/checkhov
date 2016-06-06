@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
 
   def has_permission(team, action)
     permissions = self.team_memberships.find_by(team_id: team.id).permissions
-    !!(permissions | PERMISSIONS[action])
+    !!(permissions & PERMISSIONS[action])
   rescue
     false
   end

@@ -47,7 +47,7 @@ TeamStore.getLastReceivedTeam = function () {
 };
 
 TeamStore.hasPermission = function (teamId, action) {
-  return  !!(Permissions[action] | _teams[teamId].permissions);
+  return  !!(Permissions[action] & _teams[teamId].permissions);
 };
 
 TeamStore.__onDispatch = function (payload) {

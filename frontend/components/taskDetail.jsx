@@ -18,26 +18,31 @@ var TaskDetail = React.createClass({
 
   componentDidMount: function () {
     this.listener = TaskStore.addListener(this.onUpdate);
+    TaskActions.getTask(this.props.params.taskId);
   },
 
   componentWillUnmount: function () {
     this.listener.remove();
   },
 
-  componentWillReceiveProps: function (props) {
-    // this.setState({ task: TaskStore.find(props.params.taskId)});
-    TaskActions.getTask(props.params.taskId);
-  },
-
   onUpdate: function () {
     var task = TaskStore.find(this.props.params.taskId);
     if (!task) {
       this.closeDetail();
-      return;
     }
 
-    this.setState({ task: TaskStore.find(this.props.params.taskId)});
+    this.setState({task: task});
   },
+
+  componentWillReceiveProps: function (props) {
+    console.log("receiving props");
+    var task = TaskStore.find(props.params.taskId);
+    this.setState({ task: task});
+    if (this.props.params.taskId !== props.params.taskId) {
+      TaskActions.getTask(props.params.taskId);
+    }
+  },
+
 
   closeDetail: function () {
     var projectId = this.props.params.projectId;

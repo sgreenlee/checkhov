@@ -26,8 +26,8 @@ class Api::TasksController < ApplicationController
   end
 
   def show
-    @task = current_user.tasks.find(params[:id])
-    render :show
+    @task = current_user.tasks.includes(:comments).find(params[:id])
+    render "api/tasks/task_with_comments"
   end
 
   def destroy
