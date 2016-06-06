@@ -19,7 +19,7 @@ module Permissions
   GUEST = PERMISSIONS[:create_task] |
           PERMISSIONS[:create_project] |
           PERMISSIONS[:create_comment] |
-          PERMISSIONS[:assign_tasks] |
+          PERMISSIONS[:assign_task] |
           PERMISSIONS[:set_due_date] |
           PERMISSIONS[:set_due_date] |
           PERMISSIONS[:set_task_complete]
@@ -27,6 +27,6 @@ module Permissions
   ADMIN = GUEST |
           PERMISSIONS[:delete_task] |
           PERMISSIONS[:delete_project] |
-          PERMISSIONS[:add_members]
+          PERMISSIONS[:add_member]
 
 end

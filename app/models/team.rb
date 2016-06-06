@@ -12,7 +12,6 @@ class Team < ActiveRecord::Base
   has_many :projects
 
   def newAdmin(user)
-    debugger
     self.memberships.create!(user_id: user.id, permissions: ADMIN)
   end
 

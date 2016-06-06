@@ -11,7 +11,7 @@ class Api::TeamsController < ApplicationController
   end
 
   def index
-    @teams = current_user.teams.all
+    @teams = current_user.teams.select("teams.*, team_memberships.permissions")
     render :index
   end
 

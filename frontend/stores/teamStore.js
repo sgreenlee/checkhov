@@ -1,6 +1,7 @@
 var Store = require("flux/utils").Store;
 var AppDispatcher = require("../dispatcher/dispatcher");
 var TeamConstants = require("../constants/teamConstants");
+var Permissions = require("../util/permissions");
 
 var _teams = {};
 
@@ -30,7 +31,7 @@ function _setErrors(errors) {
 var TeamStore = new Store(AppDispatcher);
 
 TeamStore.all = function () {
-  return Object.keys(_teams).map( function (teamId){ return _teams[teamId] });
+  return Object.keys(_teams).map( function (teamId){ return _teams[teamId]; });
 };
 
 TeamStore.find = function (id) {
@@ -43,6 +44,10 @@ TeamStore.getErrors = function () {
 
 TeamStore.getLastReceivedTeam = function () {
   return _lastReceivedTeam;
+};
+
+TeamStore.hasPermission = function (teamId, action) {
+  return  !!(Permissions[action] | _teams[teamId].permissions);
 };
 
 TeamStore.__onDispatch = function (payload) {

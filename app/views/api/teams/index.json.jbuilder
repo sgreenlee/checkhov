@@ -1,1 +1,1 @@
-json.array! @teams, :id, :name
+json.array! @teams, :id, :name, :permissions
