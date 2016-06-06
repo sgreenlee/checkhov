@@ -1,4 +1,5 @@
 class Team < ActiveRecord::Base
+  include Permissions
 
   validates :name, presence: true
 
@@ -10,4 +11,12 @@ class Team < ActiveRecord::Base
 
   has_many :projects
 
+  def newAdmin(user)
+    debugger
+    self.memberships.create!(user_id: user.id, permissions: ADMIN)
+  end
+
+  def newGuest(user)
+    self.memberships.create!(user_id: user.id, permissions: GUEST)
+  end
 end

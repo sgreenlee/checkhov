@@ -3,7 +3,7 @@ class Api::TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      current_user.team_memberships.create(team_id: @team.id)
+      @team.newAdmin(current_user)
       render :show
     else
       render json: { errors: @team.errors.full_messages }, status: 422

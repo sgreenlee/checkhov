@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Permissions
 
   attr_reader :password
 
@@ -37,6 +38,11 @@ class User < ActiveRecord::Base
     nil
   end
 
+  def has_permission(team, action)
+    permissions = self.team_memberships.find_by(team_id: team.id).permissions
+    !!(permissions | PERMISSIONS[action])
+  end
+
   private
 
   def ensure_session_token
@@ -46,4 +52,5 @@ class User < ActiveRecord::Base
   def generate_session_token
     SecureRandom.urlsafe_base64
   end
+
 end
