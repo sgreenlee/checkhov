@@ -5,6 +5,7 @@ var TaskActions = require("../actions/taskActions");
 var TaskDescription = require("./taskDescription");
 var TaskAssignmentSetter = require("./taskAssignmentSetter");
 var TaskDueDateSetter = require("./taskDueDateSetter");
+var TaskDeleteButton = require("./taskDeleteButton");
 
 var TaskDetail = React.createClass({
   contextTypes: {
@@ -29,6 +30,12 @@ var TaskDetail = React.createClass({
   },
 
   onUpdate: function () {
+    var task = TaskStore.find(this.props.params.taskId);
+    if (!task) {
+      this.closeDetail();
+      return;
+    }
+
     this.setState({ task: TaskStore.find(this.props.params.taskId)});
   },
 
@@ -48,6 +55,7 @@ var TaskDetail = React.createClass({
           <a onClick={this.closeDetail} className="x-icon"></a>
           <TaskAssignmentSetter task={task} />
           <TaskDueDateSetter task={task}/>
+          <TaskDeleteButton task={task} />
         </div>
         <div className="project-info"></div>
         <TaskLine task={task} />

@@ -26,8 +26,18 @@ class Api::TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
-    render "api/tasks/show"
+    @task = current_user.tasks.find(params[:id])
+    render :show
+  end
+
+  def destroy
+    @task = Task.includes(:team).find(params[:id])
+    if current_user.has_permission(@task.team, :delete_task)
+      @task.destroy
+      render :show
+    else
+      render json: {errors: ["not authorized"]}, status: 403
+    end
   end
 
 

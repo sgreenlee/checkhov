@@ -26,6 +26,10 @@ function _setErrors(errors) {
   _errors = errors;
 }
 
+function _removeTask(task) {
+  delete _tasks[task.id];
+}
+
 TaskStore.all = function() {
   return Object.keys(_tasks).map( function (taskId){ return _tasks[taskId]; });
 };
@@ -48,10 +52,19 @@ TaskStore.__onDispatch = function (payload) {
       _receiveAllTasks(payload.teamId, payload.tasks);
       TaskStore.__emitChange();
       break;
+      
     case TaskConstants.RECEIVE_TASK:
       // ignore tasks that belong to currently loaded team
       if (payload.task.team_id === _currentTeam) {
         _receiveTask(payload.task);
+        TaskStore.__emitChange();
+      }
+      break;
+
+    case TaskConstants.REMOVE_TASK:
+      // ignore tasks that belong to currently loaded team
+      if (payload.task.team_id === _currentTeam) {
+        _removeTask(payload.task);
         TaskStore.__emitChange();
       }
       break;

@@ -68,6 +68,17 @@ var TaskApiUtil = {
         ServerActions.receiveTask(task);
       }
     });
+  },
+
+  deleteTask: function (taskId) {
+    $.ajax({
+      type: "DELETE",
+      url: "/api/tasks/" + taskId,
+      dataType: "json",
+      success: function (task) {
+        ServerActions.removeTask(task);
+      }
+    });
   }
 
 };

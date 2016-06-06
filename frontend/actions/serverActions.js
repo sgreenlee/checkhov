@@ -64,6 +64,13 @@ var ServerActions = {
     });
   },
 
+  removeTask: function (task) {
+    AppDispatcher.dispatch({
+      actionType: TaskConstants.REMOVE_TASK,
+      task: task
+    });
+  },
+
   receiveTeamMembers: function (team) {
     AppDispatcher.dispatch({
       actionType: TeamMemberConstants.RECEIVE_ALL_MEMBERS,

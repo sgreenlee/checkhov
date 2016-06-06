@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   has_many :teams, through: :team_memberships, source: :team
 
+  has_many :tasks, through: :teams, source: :tasks
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -41,6 +43,8 @@ class User < ActiveRecord::Base
   def has_permission(team, action)
     permissions = self.team_memberships.find_by(team_id: team.id).permissions
     !!(permissions | PERMISSIONS[action])
+  rescue
+    false
   end
 
   private

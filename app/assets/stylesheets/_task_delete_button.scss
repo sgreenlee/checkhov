@@ -1,0 +1,76 @@
+.task-delete-button {
+  cursor: pointer;
+  position: relative;
+  float: left;
+  margin: 12px;
+  margin-left: 46px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px dashed #898E95;
+
+  i {
+    position: relative;
+    left: -1px;
+    top: -1px;
+    display: block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    color: #898E95;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    background: white;
+    border: 1px solid #898E95;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 3px;
+    text-align: center;
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    button {
+      height: 32px;
+      padding: 5px 10px;
+      margin: auto;
+    }
+  }
+
+  .dropdown::after {
+    content: "";
+    display: block;
+    top: 0px;
+    right: 50%;
+    transform: translateY(-100%) translateX(50%);
+
+    position: absolute;
+    border-top: none;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-bottom: 8px solid white;
+  }
+  .dropdown::before {
+    content: "";
+    display: block;
+    top: 0px;
+    right: 50%;
+    transform: translateY(-100%) translateX(50%);
+
+    position: absolute;
+    border-top: none;
+    border-right: 9px solid transparent;
+    border-left: 9px solid transparent;
+    border-bottom: 9px solid #898E95;
+  }
+}
