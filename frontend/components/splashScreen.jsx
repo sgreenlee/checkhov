@@ -15,6 +15,7 @@ var SplashScreen = React.createClass({
 
 
   componentDidMount: function () {
+    debugger
     if (SessionStore.getCurrentUser()) {
       // user is authenticated
       this.loadTeamInfo();
@@ -50,7 +51,7 @@ var SplashScreen = React.createClass({
 
   onTeamLoad: function () {
     this.teamListener && this.teamListener.remove();
-    var teams = TeamStore.all()
+    var teams = TeamStore.all();
     if (teams.length === 0) {
       // redirect to setup
       this.context.router.push("/setup");
@@ -61,8 +62,14 @@ var SplashScreen = React.createClass({
   },
 
   redirectToApp: function () {
-    var teamId = TeamStore.all()[0].id
-    this.context.router.push("/teams/" + teamId);
+    var next;
+    if (this.props.location.query.next) {
+      next = decodeURIComponent(this.props.location.query.next);
+    } else {
+      var teamId = TeamStore.all()[0].id;
+      next = "/teams/" + teamId;
+    }
+    this.context.router.push(next);
   },
 
 

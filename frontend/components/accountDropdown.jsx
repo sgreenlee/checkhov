@@ -1,10 +1,11 @@
 var React = require("react");
 var SessionActions = require("../actions/sessionActions");
+var SessionStore = require("../stores/sessionStore");
 
 var AccountDropdown = React.createClass({
 
   getInitialState: function() {
-    return {expanded: false};
+    return {user: SessionStore.getCurrentUser(), expanded: false};
   },
 
   getNode: function (node) {
@@ -31,7 +32,14 @@ var AccountDropdown = React.createClass({
     SessionActions.logout();
   },
 
+
   render: function() {
+    var avatar;
+    if (this.state.user) {
+      avatar = <img className="user-avatar" src={this.state.user.avatar_url} />;
+    } else {
+      avatar = <span className="user-avatar"></span>;
+    }
     var team = this.props.team || {};
     var dropdown = (
       <div className="dropdown">
@@ -43,7 +51,7 @@ var AccountDropdown = React.createClass({
    return  (
      <nav id="account-nav" ref={this.getNode}>
        <a className="account-dropdown" href="javascript:void(0)">{team.name}
-         <span className="user-avatar"></span>
+        {avatar}
        </a>
        { this.state.expanded ? dropdown : "" }
      </nav>

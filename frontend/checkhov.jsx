@@ -38,10 +38,11 @@ var App = React.createClass({
 });
 
 function _ensureLoggedIn(nextState, replace, asyncCallback) {
+  debugger
   if (!SessionStore.getCurrentUser()) {
-    replace("/");
-    asyncCallback();
+    replace({pathname: "/", query: {next: encodeURIComponent(nextState.location.pathname)}});
   }
+  asyncCallback();
 }
 
 var routes = (
@@ -57,7 +58,7 @@ var routes = (
       <Route path="team" component={TeamSetup} />
     </Route>
 
-    <Route path="teams/:teamId" component={TeamHome}>
+    <Route path="teams/:teamId" onEnter={_ensureLoggedIn} component={TeamHome}>
       <IndexRedirect to="list" />
       <Route path="list" component={TeamView}>
         <Route path=":taskId" component={TaskDetail} />
@@ -76,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 window.SessionApiUtil = require("./util/sessionApiUtil");
+window.SessionStore = SessionStore;
 window.UserApiUtil = require("./util/userApiUtil");
 window.TeamApiUtil = require("./util/teamApiUtil");
 window.TaskApiUtil = require("./util/taskApiUtil");

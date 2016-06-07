@@ -100,7 +100,7 @@ var TeamHome = React.createClass({
     var projects = this.state.projects;
     var members = this.state.members;
     var team =this.state.team;
-
+    
     return (
       <div id="team-home-component">
         <section id="teams-sidebar" className="clearfix">
