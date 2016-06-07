@@ -1,0 +1,26 @@
+.teams-nav {
+  width: 100px;
+  position: relative;
+  display: block;
+  float: left;
+
+  .dropdown {
+    width: 200px;
+    list-style: none;
+    border-radius: 3px;
+    position: absolute;
+    display: none;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+    top: calc(100%);
+
+    li {
+
+    }
+  }
+
+  .dropdown.visible {
+    display: block;
+  }
+}

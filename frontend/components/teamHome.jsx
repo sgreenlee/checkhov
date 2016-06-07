@@ -9,6 +9,7 @@ var TeamProjectList = require("./teamProjectList");
 var TeamMemberList = require("./teamMemberList");
 var ProjectActions = require("../actions/projectActions");
 var AccountDropdown = require("./accountDropdown");
+var TeamsNav = require("./teamsNav");
 
 var TeamHome = React.createClass({
   contextTypes: {
@@ -33,7 +34,7 @@ var TeamHome = React.createClass({
   },
 
   componentWillReceiveProps: function (props) {
-    if (this.props.teamId !== props.teamId) {
+    if (this.props.params.teamId !== props.params.teamId) {
       var team = TeamStore.find(props.params.teamId) || {};
       this.setState({team: team, members: [], projects: []});
       TeamMemberActions.fetchMembers(props.params.teamId);
@@ -100,7 +101,9 @@ var TeamHome = React.createClass({
     var projects = this.state.projects;
     var members = this.state.members;
     var team =this.state.team;
-    
+
+    var teamHomePath = "#/teams/" + team.id;
+
     return (
       <div id="team-home-component">
         <section id="teams-sidebar" className="clearfix">
@@ -111,8 +114,8 @@ var TeamHome = React.createClass({
         <section id="teams-main" className="clearfix">
           <header id="top-bar">
             <nav id="team-nav">
-              <a href="javascrip:void(0)">My Tasks</a>
-              <a href="javascrip:void(0)">My Inbox</a>
+              <a href={teamHomePath}>{ team.name } Home</a>
+              <TeamsNav currentTeam={this.props.teamId} />
               <a className="icon-dropdown" href="javascrip:void(0)"></a>
             </nav>
             <nav id="search"></nav>

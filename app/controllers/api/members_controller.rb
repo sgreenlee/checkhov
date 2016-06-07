@@ -10,7 +10,7 @@ class Api::MembersController < ApplicationController
       @team = current_user.teams.find(params[:team_id])
       if current_user.has_permission(@team, :add_member)
         @new_member = User.find_by(email: params[:member][:email])
-        @team.newGuest(@new_member.id)
+        @team.newGuest(@new_member)
         render :create
       else
         render json: {errors: ["not authorized"]}, status: 403

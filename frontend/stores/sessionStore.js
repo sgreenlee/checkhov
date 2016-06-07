@@ -25,7 +25,7 @@ function resetErrors(errors) {
 var SessionStore = new Store(AppDispatcher);
 
 SessionStore.getCurrentUser = function () {
-  return _currentUser;
+  return _currentUser && Object.assign({}, _currentUser);
 };
 
 SessionStore.currentUserIsFetched = function () {

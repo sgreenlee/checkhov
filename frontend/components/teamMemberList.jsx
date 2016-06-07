@@ -23,7 +23,8 @@ var TeamMemberList = React.createClass({
     this.setState({newMemberEmail: e.target.value });
   },
 
-  onSubmit: function () {
+  onSubmit: function (e) {
+    e.preventDefault();
     TeamMemberActions.addMember({email: this.state.newMemberEmail, teamId: this.props.teamId });
   },
 

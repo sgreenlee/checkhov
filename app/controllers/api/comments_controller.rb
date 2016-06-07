@@ -2,9 +2,7 @@ class Api::CommentsController < ApplicationController
 
   def index
     @task = current_user.tasks.find(params[:task_id])
-    @comments = @task.comments
-                  .joins(:author)
-                  .select("comments.*, users.first_name, users.last_name, users.email")
+    @comments = @task.comments.includes(:author)
     render :index
   end
 

@@ -6,7 +6,7 @@ var CommentIndexItem = React.createClass({
     var comment = this.props.comment;
     return (
       <li className="comment-index-item" key={comment.id}>
-        <div className="avatar" />
+        <img className="avatar"  src={comment.avatar_url} />
         <h6>{comment.first_name} {comment.last_name} <span className="email">({comment.email})</span> says:</h6>
         <p>{comment.content}</p>
       </li>

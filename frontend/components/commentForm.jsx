@@ -5,14 +5,15 @@ var CommentActions = require("../actions/commentActions");
 var CommentForm = React.createClass({
 
   getInitialState: function() {
-    return {user: SessionStore.getCurrentUser(), content: ""};
+    return { content: ""};
   },
 
   onChange: function (e) {
     this.setState({ content: e.target.value });
   },
 
-  onSubmit: function () {
+  onSubmit: function (e) {
+    e.preventDefault();
     CommentActions.createComment({
       content: this.state.content,
       task_id: this.props.task.id

@@ -16,6 +16,15 @@ var TeamView = React.createClass({
     return { tasks: tasks, filter: "All Tasks" };
   },
 
+  componentWillReceiveProps: function (props) {
+    if (props.params.teamId !== this.props.params.teamId) {
+      var tasks = TaskStore.getCurrentTeam() === this.props.params.teamId ?
+        TaskStore.all() : [];
+      this.setState({tasks: tasks});
+      TaskActions.fetchTasksByTeam(props.params.teamId);
+    }
+  },
+
   componentDidMount: function () {
     this.listener = TaskStore.addListener(this.onUpdate);
     TaskActions.fetchTasksByTeam(this.props.params.teamId);
@@ -26,6 +35,7 @@ var TeamView = React.createClass({
   },
 
   onUpdate: function () {
+    debugger
     if (TaskStore.getCurrentTeam() === parseInt(this.props.params.teamId)) {
       this.setState({tasks: TaskStore.all()});
     }

@@ -6,7 +6,6 @@
   cursor: pointer;
   color: #898E95;
   opacity: 1;
-  overflow: hidden;
 
   position: relative;
   background: white;
@@ -20,6 +19,13 @@
   transition: width .6s;
 
   border: 1px solid transparent;
+
+  .container {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+  }
 
   h6 {
     position: absolute;
@@ -151,14 +157,17 @@
     left: 22px;
   }
 
-  input {
+  .input-mask {
     position: absolute;
+    overflow: hidden;
     height: 42px;
     top: 50%;
     transform: translateY(-50%);
-    overflow: hidden;
     width: 180px;
     margin-left: 60px;
+  }
+
+  input {
     font-size: 14px;
     outline: none;
     resize: none;

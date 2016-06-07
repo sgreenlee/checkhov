@@ -50,7 +50,7 @@ var AccountDropdown = React.createClass({
     );
    return  (
      <nav id="account-nav" ref={this.getNode}>
-       <a className="account-dropdown" href="javascript:void(0)">{team.name}
+       <a className="account-dropdown" href="javascript:void(0)">{this.state.user.email}
         {avatar}
        </a>
        { this.state.expanded ? dropdown : "" }

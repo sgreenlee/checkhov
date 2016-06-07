@@ -12,11 +12,19 @@ var TaskAssignmentSetter = React.createClass({
   },
 
   componentDidMount: function () {
+    this.memberListener = TeamMemberStore.addListener(this.memberUpdate);
     window.addEventListener("click", this.pageClick);
   },
 
   componentWillUnmount: function () {
+    this.memberListener.remove();
     window.removeEventListener("click", this.pageClick);
+  },
+
+  memberUpdate: function () {
+    var assigneeId = this.props.task.assignee_id || undefined;
+    var assignee = assigneeId && TeamMemberStore.find(assigneeId);
+    this.setState({ assignee: assignee });
   },
 
   componentWillReceiveProps: function (props) {
@@ -67,15 +75,22 @@ var TaskAssignmentSetter = React.createClass({
     var className = this.state.expanded ? " expanded" : "";
     if (assignee) {
       name = assignee.first_name + " " + assignee.last_name;
-      className = className || " assigned";
+      className = className + " assigned";
     }
+
+    var avatar = assignee ? <img className="avatar" src={assignee.avatar_url} />
+      : <div className="avatar" />;
 
     var content;
     if (this.state.expanded) {
       content = (
-        <div className={"assignment-setter expanded"} ref={this.getNode}>
-          <div className="avatar" />
-          <input onChange={this.onInput} placeholder="Enter name or email" />
+        <div className={"assignment-setter" + className} ref={this.getNode}>
+          <div className="container">
+            {avatar}
+            <div className="input-mask">
+              <input onChange={this.onInput} placeholder="Enter name or email" />
+            </div>
+          </div>
           <ul className="search-results">
               {this.state.members.map(function(member) {
                 return <MemberListItem key={member.id} member={member}
@@ -87,7 +102,7 @@ var TaskAssignmentSetter = React.createClass({
     } else {
       content = (
         <div className={"assignment-setter" + className} ref={this.getNode}>
-          <div className="avatar" />
+          { avatar }
           <div className="unassign-button" ref={this.getUnassignNode} onClick={this.unassign}>
             <div className="tooltip" content="Unassign" />
           </div>

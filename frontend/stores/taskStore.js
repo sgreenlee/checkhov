@@ -10,7 +10,8 @@ var _errors = [];
 var TaskStore = new Store(AppDispatcher);
 
 function _receiveAllTasks(team_id, tasks) {
-  _currentTeam =  team_id;
+  debugger
+  _currentTeam = team_id;
   _tasks = {};
   tasks.forEach( function (task){
     _tasks[task.id] = task;
