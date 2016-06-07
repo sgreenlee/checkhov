@@ -491,50 +491,6 @@ footer h4 {
   }
 }
 
-.task-line {
-  padding-left: 40px;
-  border-top: 1px solid #E5E5E5;
-  position: relative;
-
-  .complete-task-button {
-    margin: 7px 10px;
-    color: #E1E2E4;
-    position: absolute;
-    left: 0px;
-    display: block;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    vertical-align: middle;
-    text-align: center;
-    border: 1px solid #B9BCC0;
-    cursor: pointer;
-  }
-
-  .complete-task-button::after {
-    content: "✓";
-  }
-
-  .complete-task-button:hover {
-    color: #3BF7D1;
-    border: 2px solid #3BF7D1;
-  }
-
-  .complete-task-button.completed  {
-    background-color: #3BF7D1;
-    color: white;
-    border: 1px solid transparent;
-  }
-
-  textarea {
-    resize: none;
-    border: 0px solid transparent;
-    height: inherit;
-    outline: none;
-    width: 400px;
-  }
-}
 
 .task-description {
   margin: 10px 30px 10px 60px;
@@ -547,7 +503,6 @@ footer h4 {
   font-size: 14px;
   line-height: 20px;
   border-radius: 3px;
-
 }
 
 .task-description:hover {

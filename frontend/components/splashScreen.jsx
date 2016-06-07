@@ -15,7 +15,6 @@ var SplashScreen = React.createClass({
 
 
   componentDidMount: function () {
-    debugger
     if (SessionStore.getCurrentUser()) {
       // user is authenticated
       this.loadTeamInfo();

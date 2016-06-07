@@ -35,7 +35,6 @@ var TeamView = React.createClass({
   },
 
   onUpdate: function () {
-    debugger
     if (TaskStore.getCurrentTeam() === parseInt(this.props.params.teamId)) {
       this.setState({tasks: TaskStore.all()});
     }

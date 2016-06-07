@@ -10,6 +10,7 @@ var CommentIndex = require("./commentIndex");
 var CommentStore = require("../stores/commentStore");
 var CommentActions = require("../actions/commentActions");
 var CommentForm = require("./commentForm");
+var TeamStore = require("../stores/teamStore");
 
 var TaskDetail = React.createClass({
   contextTypes: {
@@ -21,6 +22,11 @@ var TaskDetail = React.createClass({
       task: TaskStore.find(this.props.params.taskId),
       comments: CommentStore.findByTask(this.props.params.taskId)
     };
+  },
+
+  checkPermission: function (action) {
+    if (!this.state.task) return false;
+    return TeamStore.hasPermission(this.state.task.team_id, action)
   },
 
   componentDidMount: function () {
@@ -70,13 +76,15 @@ var TaskDetail = React.createClass({
 
   render: function() {
     var task = this.state.task || {};
+
+    var canDelete = this.checkPermission("delete_task");
     return (
       <section className="task-detail-container">
         <div className="header clearfix">
           <a onClick={this.closeDetail} className="x-icon"></a>
           <TaskAssignmentSetter task={task} />
           <TaskDueDateSetter task={task}/>
-          <TaskDeleteButton task={task} />
+          { canDelete ? <TaskDeleteButton task={task} /> : "" }
         </div>
         <div className="project-info"></div>
         <TaskLine task={task} />

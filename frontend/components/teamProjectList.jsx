@@ -26,6 +26,7 @@ var TeamProjectList = React.createClass({
     e.preventDefault();
     ProjectActions.createProject({title: this.state.newTeamName, team_id: this.props.teamId });
     this.closeModal();
+    this.setState({ newTeamName: "" });
   },
 
   render: function() {

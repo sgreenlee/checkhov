@@ -1,5 +1,6 @@
 var React = require("react");
 var TaskActions = require("../actions/taskActions");
+var TeamMemberStore = require("../stores/teamMemberStore");
 
 var TaskLine = React.createClass({
 
@@ -17,11 +18,19 @@ var TaskLine = React.createClass({
     this.props.openDetail(this.props.task.id);
   },
 
-  onChange: function (e) {
-    this.setState({ title: e.target.value });
+  getDOMNode: function (node) {
+    this.DOMNode = node;
+  },
+
+  onKeyPress: function (e) {
+    console.log("onKeyPress");
+    if (e.key === 'Enter') {
+      this.DOMNode.blur();
+    }
   },
 
   onBlur: function (e) {
+    console.log("onBlur");
     var initial = this.props.task;
     if (this.state.title && this.state.title !== initial.title) {
       if (initial.id) {
@@ -30,6 +39,10 @@ var TaskLine = React.createClass({
         this.createNewTask();
       }
     }
+  },
+
+  onChange: function (e) {
+    this.setState({ title: e.target.value });
   },
 
   toggleComplete: function () {
@@ -55,11 +68,19 @@ var TaskLine = React.createClass({
 
   render: function() {
     var task = this.props.task;
+    var assignee = task.assignee_id && TeamMemberStore.find(task.assignee_id);
     var completed = task.completed ? " completed" : "";
+
+    var avatar;
+    if (assignee) {
+      avatar = <img className="avatar" alt={assignee.first_name} src={assignee.avatar_url} />;
+    }
     return (
         <div className="task-line">
           <a onClick={this.toggleComplete} className={"complete-task-button" + completed }></a>
-          <textarea onChange={this.onChange} onBlur={this.onBlur} value={this.state.title}></textarea>
+          <input ref={this.getDOMNode} type="text" onChange={this.onChange }
+            onKeyPress={this.onKeyPress} onBlur={this.onBlur} value={this.state.title} />
+            { avatar }
         </div>
     );
   }
