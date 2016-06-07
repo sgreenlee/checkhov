@@ -9,7 +9,7 @@ var ProfileSetup = React.createClass({
 
   getInitialState: function() {
     var user = SessionStore.getCurrentUser() || {};
-    return {first: "", last: "", email: user.email};
+    return {first: "", last: "", email: user.email, avatarFile: ""};
   },
 
   componentDidMount: function () {
@@ -22,13 +22,17 @@ var ProfileSetup = React.createClass({
 
   onSubmit: function (e) {
     e.preventDefault();
-    UserActions.updateUser({first: this.state.first, last: this.state.last });
-    
+
+    var formData = new FormData();
+    formData.append("user[first_name]", this.state.first);
+    formData.append("user[last_name]", this.state.last);
+    formData.append("user[avatar]", this.state.avatarFile);
+    UserActions.updateProfile(formData);
   },
 
   onResponse: function () {
     this.context.router.push("/setup/team");
-    
+
   },
 
   firstChange: function (e) {
@@ -39,7 +43,21 @@ var ProfileSetup = React.createClass({
     this.setState({last: e.target.value});
   },
 
+  updateAvatar: function (e) {
+    var file = e.currentTarget.files[0];
+    var fileReader = new FileReader();
+    fileReader.onloadend = function () {
+      this.setState( {avatarFile: file, imageUrl: fileReader.result });
+    }.bind(this);
+
+    if (file) fileReader.readAsDataURL(file);
+  },
+
   render: function() {
+    var avatarImage;
+    if (this.state.imageUrl) {
+      avatarImage = <img width="250" height="250" src={this.state.imageUrl} ></img>;
+    }
     return (
       <div>
         <h3>Please start by completing your profile.</h3>
@@ -54,8 +72,10 @@ var ProfileSetup = React.createClass({
           <label htmlFor="email">Email</label>
             <input type="text" disabled="true" value={this.state.email} />
 
+
           <div className="avatar-frame">
-            Add Photo
+            { avatarImage ? avatarImage : "Add Photo" }
+            <input type="file" onChange={this.updateAvatar}/>
           </div>
           <input type="submit" value="Continue"/>
         </form>

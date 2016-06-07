@@ -38,7 +38,6 @@ var App = React.createClass({
 });
 
 function _ensureLoggedIn(nextState, replace, asyncCallback) {
-  debugger
   if (!SessionStore.getCurrentUser()) {
     replace({pathname: "/", query: {next: encodeURIComponent(nextState.location.pathname)}});
   }

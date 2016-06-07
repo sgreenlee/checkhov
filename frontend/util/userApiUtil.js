@@ -32,6 +32,24 @@ var UserApiUtil = {
         if (errors) ServerActions.receiveUserErrors(errors);
       }
     });
+  },
+
+  updateProfile: function(formData) {
+    $.ajax({
+      type: "PATCH",
+      url: "/api/users",
+      data: formData,
+      dataType: "json",
+      contentType: false,
+      processData: false,
+      success: function (user) {
+        ServerActions.receiveCurrentUser(user);
+      },
+      error: function (response) {
+        var errors = response.responseJSON.errors;
+        if (errors) ServerActions.receiveUserErrors(errors);
+      }
+    });
   }
 
 };

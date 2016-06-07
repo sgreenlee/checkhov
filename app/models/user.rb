@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   has_many :comments, foreign_key: :author_id
 
-  has_attached_file :avatar, default_url: "missing.png", styles: { thumb: "30x30"}
+  has_attached_file :avatar, default_url: "missing.png", styles: { thumb: "100x100#"}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   def password=(password)
