@@ -1,6 +1,7 @@
 var Store = require("flux/utils").Store;
 var AppDispatcher = require("../dispatcher/dispatcher");
 var TaskConstants = require("../constants/taskConstants");
+var CommentConstants = require("../constants/commentConstants");
 
 var _tasks = {};
 var _currentTeam = null;
@@ -52,7 +53,7 @@ TaskStore.__onDispatch = function (payload) {
       _receiveAllTasks(payload.teamId, payload.tasks);
       TaskStore.__emitChange();
       break;
-      
+
     case TaskConstants.RECEIVE_TASK:
       // ignore tasks that belong to currently loaded team
       if (payload.task.team_id === _currentTeam) {

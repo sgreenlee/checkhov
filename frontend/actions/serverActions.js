@@ -4,6 +4,8 @@ var TeamConstants = require("../constants/teamConstants");
 var TaskConstants = require("../constants/taskConstants");
 var ProjectConstants = require("../constants/projectConstants");
 var TeamMemberConstants = require("../constants/teamMemberConstants");
+var CommentConstants = require("../constants/commentConstants");
+var CommentStore = require("../stores/commentStore");
 
 var ServerActions = {
 
@@ -101,6 +103,27 @@ var ServerActions = {
       projects: team.projects
     });
   },
+
+  receiveComment: function (comment) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.RECEIVE_COMMENT,
+      comment: comment
+    });
+  },
+
+  receiveAllComments: function (comments) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.RECEIVE_ALL_COMMENTS,
+      comments: comments
+    });
+  },
+
+  removeComment: function (comment) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.REMOVE_COMMENT,
+      comment: comment
+    });
+  }
 
 };
 

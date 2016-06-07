@@ -211,21 +211,23 @@ var TaskDueDateSetter = React.createClass({
           <div className="avatar"><i className="fa fa-calendar" aria-hidden="true"></i></div>
           <input value={formattedDueDate} type="text" placeholder="mm/dd/yyyy" />
           <div className="calendar">
-            <div className="select-bar">
-              <a className="left" onClick={this.decrementMonth}/>
-              <p>{ dateString }</p>
-              <a className="right" onClick={this.incrementMonth}/>
-            </div>
-            <div className="calendar-body clearfix">
-              <div className="cal-header">Su</div>
-              <div className="cal-header">Mo</div>
-              <div className="cal-header">Tu</div>
-              <div className="cal-header">We</div>
-              <div className="cal-header">Th</div>
-              <div className="cal-header">Fr</div>
-              <div className="cal-header">Sa</div>
-              { blanks }
-              { days }
+            <div className="container">
+              <div className="select-bar">
+                <a className="left" onClick={this.decrementMonth}/>
+                <p>{ dateString }</p>
+                <a className="right" onClick={this.incrementMonth}/>
+              </div>
+              <div className="calendar-body clearfix">
+                <div className="cal-header">Su</div>
+                <div className="cal-header">Mo</div>
+                <div className="cal-header">Tu</div>
+                <div className="cal-header">We</div>
+                <div className="cal-header">Th</div>
+                <div className="cal-header">Fr</div>
+                <div className="cal-header">Sa</div>
+                { blanks }
+                { days }
+              </div>
             </div>
           </div>
         </div>

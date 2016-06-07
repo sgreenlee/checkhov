@@ -1,0 +1,37 @@
+.task-detail-container {
+  position: relative;
+  padding-bottom: 85px;
+
+  .header {
+    position: relative;
+    padding: 0px 30px;
+    height: 60px;
+    border-bottom: 1px solid #B9BCC0;
+    z-index: 1000;
+  }
+
+  .project-info {
+    height: 40px;
+  }
+
+  .task-line {
+    height: 40px;
+    margin: 5px 30px;
+    line-height: 40px;
+    padding-left: 50px;
+    border-top: none;
+
+    .complete-task-button {
+      left: 5px;
+      height: 30px;
+      width: 30px;
+      margin: 5px;
+      font-size: 26px;
+      line-height: 30px;
+    }
+  }
+
+  .task-line:hover {
+    border: 1px solid #E0E0E0;
+  }
+}

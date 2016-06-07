@@ -65,8 +65,8 @@ var TaskApiUtil = {
       type: "GET",
       url: "/api/tasks/" + taskId,
       dataType: "json",
-      success: function (data) {
-        ServerActions.receiveTask(data.task);
+      success: function (task) {
+        ServerActions.receiveTask(task);
       }
     });
   },

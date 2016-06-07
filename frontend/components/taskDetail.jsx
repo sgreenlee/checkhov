@@ -6,6 +6,10 @@ var TaskDescription = require("./taskDescription");
 var TaskAssignmentSetter = require("./taskAssignmentSetter");
 var TaskDueDateSetter = require("./taskDueDateSetter");
 var TaskDeleteButton = require("./taskDeleteButton");
+var CommentIndex = require("./commentIndex");
+var CommentStore = require("../stores/commentStore");
+var CommentActions = require("../actions/commentActions");
+var CommentForm = require("./commentForm");
 
 var TaskDetail = React.createClass({
   contextTypes: {
@@ -13,36 +17,48 @@ var TaskDetail = React.createClass({
   },
 
   getInitialState: function() {
-    return { task: TaskStore.find(this.props.params.taskId)};
+    return {
+      task: TaskStore.find(this.props.params.taskId),
+      comments: CommentStore.findByTask(this.props.params.taskId)
+    };
   },
 
   componentDidMount: function () {
-    this.listener = TaskStore.addListener(this.onUpdate);
+    this.taskListener = TaskStore.addListener(this.onTaskUpdate);
+    this.commentListener = CommentStore.addListener(this.onCommentUpdate);
     TaskActions.getTask(this.props.params.taskId);
+    CommentActions.fetchComments(this.props.params.taskId);
   },
 
   componentWillUnmount: function () {
-    this.listener.remove();
+    this.taskListener.remove();
+    this.commentListener.remove();
   },
 
-  onUpdate: function () {
+  onTaskUpdate: function () {
     var task = TaskStore.find(this.props.params.taskId);
     if (!task) {
       this.closeDetail();
+      return;
     }
 
     this.setState({task: task});
   },
 
+  onCommentUpdate: function () {
+    this.setState({comments: CommentStore.findByTask(this.props.params.taskId) });
+  },
+
   componentWillReceiveProps: function (props) {
     console.log("receiving props");
     var task = TaskStore.find(props.params.taskId);
-    this.setState({ task: task});
+    var comments = CommentStore.findByTask(props.params.taskId);
+    this.setState({ task: task, comments: comments});
     if (this.props.params.taskId !== props.params.taskId) {
       TaskActions.getTask(props.params.taskId);
+      CommentActions.fetchComments(props.params.taskId);
     }
   },
-
 
   closeDetail: function () {
     var projectId = this.props.params.projectId;
@@ -65,6 +81,8 @@ var TaskDetail = React.createClass({
         <div className="project-info"></div>
         <TaskLine task={task} />
         <TaskDescription task={task} />
+        <CommentIndex task={task} comments={this.state.comments} />
+        <CommentForm  task={task}/>
       </section>
     );
   }

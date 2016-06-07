@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   has_many :tasks, through: :teams, source: :tasks
 
+  has_many :comments, foreign_key: :author_id
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

@@ -6,6 +6,7 @@
   cursor: pointer;
   color: #898E95;
   opacity: 1;
+  overflow: hidden;
 
   position: relative;
   background: white;
@@ -16,6 +17,7 @@
 
   border-radius: 18px;
   line-height: 36px;
+  transition: width .6s;
 
   border: 1px solid transparent;
 

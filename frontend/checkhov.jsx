@@ -82,3 +82,4 @@ window.TaskApiUtil = require("./util/taskApiUtil");
 window.TeamStore = TeamStore;
 window.TaskStore = TaskStore;
 window.ProjectStore = ProjectStore;
+window.CommentApiUtil = require("./util/commentApiUtil");

@@ -17,6 +17,8 @@
   border-radius: 18px;
   line-height: 36px;
 
+  transition: width .6s;
+
   border: 1px solid transparent;
 
   h6 {
@@ -164,10 +166,11 @@
   .calendar {
     cursor: auto;
     position: absolute;
+    max-height: 256px;
+    overflow: hidden;
     margin: 0;
-    padding: 10px;
     top: calc(100% + 1px);
-    width: 230px;
+    width: calc(100% + 2px);
     border-radius: 3px;
     left: -1px;
     opacity: 1;
@@ -177,6 +180,11 @@
     text-transform: uppercase;
     font-weight: light;
     list-style: none;
+
+    .container {
+      padding: 10px;
+      width: 230px;
+    }
 
     .select-bar {
       position: relative;

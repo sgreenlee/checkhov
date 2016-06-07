@@ -19,15 +19,15 @@ class Api::TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      render  "api/tasks/show"
+      render  :show
     else
       render json: { errors: @task.errors.full_messages }, status: 422
     end
   end
 
   def show
-    @task = current_user.tasks.includes(:comments).find(params[:id])
-    render "api/tasks/task_with_comments"
+    @task = current_user.tasks.find(params[:id])
+    render :show
   end
 
   def destroy

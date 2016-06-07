@@ -20,7 +20,11 @@ Rails.application.routes.draw do
       resources :projects, only: [:index, :create]
     end
 
-    resources :tasks, only: [:update, :destroy, :show]
+    resources :tasks, only: [:update, :destroy, :show] do
+      resources :comments, only: [:index, :create]
+    end
+
+    resources :comments, only: [:destroy]
 
   end
 end
