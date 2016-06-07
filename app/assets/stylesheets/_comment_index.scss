@@ -5,6 +5,16 @@
   overflow: scroll;
   height: calc(100% - 220px);
 
+  h5 {
+    margin-top: 20px;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #898E95;
+    // font-weight: bold  ;
+  }
+
   ul {
     list-style: none;
   }
