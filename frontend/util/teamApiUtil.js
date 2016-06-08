@@ -20,7 +20,14 @@ var TeamApiUtil = {
       dataType: "json",
       data: { team: team },
       success: function (team) {
-        ServerActions.receiveTeam(team);
+        ServerActions.receiveCreatedTeam(team);
+      },
+      error: function (data) {
+
+        var errors = data.responseJSON.errors;
+        if (errors) {
+          ServerActions.receiveTeamErrors(errors);
+        }
       }
     });
   },

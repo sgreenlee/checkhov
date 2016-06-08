@@ -1,0 +1,22 @@
+.team-form-component {
+  > a {
+    width: 120px;
+  }
+
+  .modal {
+    width: 530px;
+
+    h4 {
+      padding: 20px 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+      border-bottom: 1px solid #e1e2e4;
+    }
+
+    p {
+      font-size: 15px;
+      padding: 20px 30px 0px 30px;
+    }
+  }
+}

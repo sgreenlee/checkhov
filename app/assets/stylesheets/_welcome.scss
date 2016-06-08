@@ -1,0 +1,42 @@
+#login-modal {
+  width: 550px;
+
+  .google-oauth {
+    display: block;
+    margin: 20px auto;
+    height: 40px;
+    font-size: 16px;
+
+    .fa-google-plus {
+      margin-right: 10px;
+    }
+  }
+
+  .horizontal-divider {
+    display: block;
+    height: 0px;
+    width: calc(100% - 60px);
+    margin: 40px auto 0px auto;
+    border-top: 1px solid #cdcfd2;
+  }
+}
+
+.circle-text {
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 22px;
+  margin: 0px auto;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#signup-modal {
+  width: 550px;
+}

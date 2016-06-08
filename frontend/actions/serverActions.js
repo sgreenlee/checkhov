@@ -30,10 +30,24 @@ var ServerActions = {
     });
   },
 
+  receiveCreatedTeam: function (team) {
+    AppDispatcher.dispatch({
+      actionType: TeamConstants.RECEIVE_CREATED_TEAM,
+      team: team
+    });
+  },
+
   receiveTeam: function (team) {
     AppDispatcher.dispatch({
       actionType: TeamConstants.RECEIVE_TEAM,
       team: team
+    });
+  },
+
+  receiveTeamErrors: function (errors) {
+    AppDispatcher.dispatch({
+      actionType: TeamConstants.RECEIVE_TEAM_ERRORS,
+      errors: errors
     });
   },
 

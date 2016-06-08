@@ -109,42 +109,7 @@ input[type="submit"] {
   background-color: white;
 }
 
-.google-oauth {
-  display: block;
-  margin: 20px auto;
-  height: 40px;
-  font-size: 16px;
 
-  .fa-google-plus {
-    margin-right: 10px;
-  }
-}
-
-.modal {
-  .horizontal-divider {
-    display: block;
-    height: 0px;
-    width: calc(100% - 60px);
-    margin: 40px auto 0px auto;
-    border-top: 1px solid #cdcfd2;
-  }
-
-  .circle-text {
-    display: block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 22px;
-    margin: 0px auto;
-    border-radius: 50%;
-    background: white;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
 
 
 section.main {
@@ -173,28 +138,6 @@ footer h4 {
   text-align: center;
   font-size: 32px;
   color: #676d76;
-}
-
-#modal-overlay, .modal {
-  position: absolute;
-}
-
-#modal-overlay {
-  background-color: rgba(76, 76, 76, .6);
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-}
-
-.modal {
-  border-radius: 3px;
-  background-color: white;
-  width: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  color: #a1a4aa;
 }
 
 .modal h3 {
@@ -253,27 +196,6 @@ footer h4 {
   padding-left: 10px;
 }
 
-.x-icon {
-  display: block;
-  color: #898e95;
-  cursor: pointer;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  padding: 15px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.x-icon::after {
-  content: "✕";
-}
-
-.x-icon:hover {
-  color: #02CEFF;
-}
-
-
 
 #team-home-component {
   position: absolute;
@@ -326,9 +248,9 @@ footer h4 {
   nav {
     height: 30px;
     align-self: center;
-    width: 435px;
+    width: 600px;
 
-    a {
+    > a, > * > a {
       display: block;
       font-size: 11px;
       height: inherit;
@@ -342,8 +264,8 @@ footer h4 {
 
     a.icon-dropdown::after {
       content: "＋";
-      margin: 3px;
-      display: block;
+      margin: 3px 10px;
+      display: inline-block;
       position: relative;
       line-height: 24px;
       vertical-align: middle;
@@ -368,7 +290,7 @@ footer h4 {
     padding-left: 15px;
 
 
-    a {
+    > * {
       float: left;
     }
   }

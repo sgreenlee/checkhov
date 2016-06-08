@@ -17,7 +17,11 @@
     top: calc(100%);
 
     li {
-
+      a {
+        display: block;
+        font-size: 13px;
+        padding: 5px 10px;
+      }
     }
   }
 

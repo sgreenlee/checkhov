@@ -49,9 +49,9 @@ var Signup = React.createClass({
   render: function() {
     return (
 <div>
-  <div id="modal-overlay" onClick={this.closeModal} className="modal-group modal-close"></div>
+  <div onClick={this.closeModal} className="modal-group modal-close modal-overlay open"></div>
 
-  <div className="modal modal-group" id="signup-modal">
+  <div className="modal modal-group open" id="signup-modal">
     <span className="modal-close x-icon" onClick={this.closeModal}></span>
     <h3>Sign Up</h3>
     <form onSubmit={this.onSubmit} className="clearfix" id="signup-form">

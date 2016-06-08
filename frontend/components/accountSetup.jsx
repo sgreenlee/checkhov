@@ -10,7 +10,7 @@ var AccountSetup = React.createClass({
     return (
 
 <div className="account-setup-bg">
-  <div className="modal account-setup-modal">
+  <div className="modal account-setup-modal open">
     {this.props.children}
   </div>
 

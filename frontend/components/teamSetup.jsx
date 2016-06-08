@@ -26,7 +26,7 @@ var TeamSetup = React.createClass({
 
   onResponse: function () {
     var errors = TeamStore.getErrors();
-    
+
     if (errors.length === 0) {
       // redirect to app on success
       var teamId = TeamStore.getLastReceivedTeam();

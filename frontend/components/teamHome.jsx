@@ -10,6 +10,7 @@ var TeamMemberList = require("./teamMemberList");
 var ProjectActions = require("../actions/projectActions");
 var AccountDropdown = require("./accountDropdown");
 var TeamsNav = require("./teamsNav");
+var TeamForm = require("./teamForm");
 
 var TeamHome = React.createClass({
   contextTypes: {
@@ -116,7 +117,7 @@ var TeamHome = React.createClass({
             <nav id="team-nav">
               <a href={teamHomePath}>{ team.name } Home</a>
               <TeamsNav currentTeam={this.props.teamId} />
-              <a className="icon-dropdown" href="javascrip:void(0)"></a>
+              <TeamForm />
             </nav>
             <AccountDropdown team={team}/>
           </header>

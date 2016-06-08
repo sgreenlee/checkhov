@@ -34,6 +34,7 @@ var TeamMemberList = React.createClass({
   },
 
   closeModal: function (e) {
+    // this.setState({ open: false, errors: [], newTeamName: "" });
     this.setState({ open: false });
   },
 

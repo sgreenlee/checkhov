@@ -49,9 +49,9 @@ var Login = React.createClass({
   render: function() {
     return (
 <div>
-  <div id="modal-overlay" onClick={this.closeModal} className="modal-group modal-close"><a href="#/welcome"></a></div>
+  <div onClick={this.closeModal} className="modal-group modal-overlay open"><a href="#/welcome"></a></div>
 
-  <div className="modal modal-group" id="login-modal">
+  <div className="modal modal-group open" id="login-modal">
     <span className="modal-close x-icon" onClick={this.closeModal}></span>
     <h3>Log in</h3>
     <button className="google-oauth"><a href="/auth/google_oauth2"><i className="fa fa-google-plus" aria-hidden="true"></i>Log in using Google</a></button>
