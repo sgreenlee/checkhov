@@ -199,7 +199,7 @@ var TaskDueDateSetter = React.createClass({
 
     var days = [];
     for (var j = 1; j <= daysInMonth; j++) {
-      days.push(<div className="cal-day" onClick={this.setDate}>{j}</div>);
+      days.push(<div className="cal-day" key={j} onClick={this.setDate}>{j}</div>);
     }
 
     var dateString = MONTH_NAMES[date.getMonth() + 1] + ", " + (date.getYear() + 1900);
