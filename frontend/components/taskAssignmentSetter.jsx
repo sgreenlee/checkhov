@@ -87,9 +87,7 @@ var TaskAssignmentSetter = React.createClass({
         <div className={"assignment-setter" + className} ref={this.getNode}>
           <div className="container">
             {avatar}
-            <div className="input-mask">
-              <input onChange={this.onInput} placeholder="Enter name or email" />
-            </div>
+            <input onChange={this.onInput} placeholder="Enter name or email" />
           </div>
           <ul className="search-results">
               {this.state.members.map(function(member) {
@@ -103,10 +101,11 @@ var TaskAssignmentSetter = React.createClass({
       content = (
         <div className={"assignment-setter" + className} ref={this.getNode}>
           { avatar }
+          <h6>{name}</h6>
+          <input onChange={this.onInput} placeholder="Enter name or email" />
           <div className="unassign-button" ref={this.getUnassignNode} onClick={this.unassign}>
             <div className="tooltip" content="Unassign" />
           </div>
-          <h6>{name}</h6>
         </div>
       );
 

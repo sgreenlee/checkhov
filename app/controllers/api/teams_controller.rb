@@ -16,7 +16,7 @@ class Api::TeamsController < ApplicationController
   end
 
   def show
-    @team = current_user.teams.find(params[:id])
+    @team = current_user.teams.select("teams.*, team_memberships.permissions").find(params[:teamId])
     render :show
   end
 

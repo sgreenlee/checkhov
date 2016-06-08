@@ -1,1 +1,1 @@
-json.extract! @team, :id, :name
+json.extract! @team, :id, :name, :permissions

@@ -11,12 +11,11 @@
   background: white;
 
   height: 36px;
-  width: 130px;
   margin: 12px 0px;
 
   border-radius: 18px;
   line-height: 36px;
-  transition: width .6s;
+  // transition: width .6s;
 
   border: 1px solid transparent;
 
@@ -27,11 +26,22 @@
     overflow: hidden;
   }
 
+  input {
+    width: 0px;
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+    display: block;
+    font-size: 14px;
+    outline: none;
+    resize: none;
+    border: none;
+    overflow: hidden;
+
+  }
+
   h6 {
-    position: absolute;
-    height: 36px;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 40px;
     overflow: hidden;
     width: 80px;
     margin-left: 40px;
@@ -157,21 +167,11 @@
     left: 22px;
   }
 
-  .input-mask {
-    position: absolute;
-    overflow: hidden;
-    height: 42px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 180px;
-    margin-left: 60px;
-  }
 
   input {
-    font-size: 14px;
-    outline: none;
-    resize: none;
-    border: none;
+    margin-left: 60px;
+    width: 130px;
+    transition: width 4s;
   }
 
   .search-results {
