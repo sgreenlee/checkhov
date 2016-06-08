@@ -67,7 +67,6 @@ var TeamView = React.createClass({
   },
 
   render: function() {
-    console.log("team view rendering");
     var team = this.props.team;
     return (
     <div className="project-view">

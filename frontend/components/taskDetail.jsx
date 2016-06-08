@@ -56,7 +56,6 @@ var TaskDetail = React.createClass({
   },
 
   componentWillReceiveProps: function (props) {
-    console.log("receiving props");
     var task = TaskStore.find(props.params.taskId);
     var comments = CommentStore.findByTask(props.params.taskId);
     this.setState({ task: task, comments: comments});

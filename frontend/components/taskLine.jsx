@@ -23,14 +23,12 @@ var TaskLine = React.createClass({
   },
 
   onKeyPress: function (e) {
-    console.log("onKeyPress");
     if (e.key === 'Enter') {
       this.DOMNode.blur();
     }
   },
 
   onBlur: function (e) {
-    console.log("onBlur");
     var initial = this.props.task;
     if (this.state.title && this.state.title !== initial.title) {
       if (initial.id) {

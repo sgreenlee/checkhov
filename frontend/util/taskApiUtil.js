@@ -20,14 +20,12 @@ var TaskApiUtil = {
   },
 
   updateTask: function (task) {
-    console.log("making Api call to update task");
     $.ajax({
       type: "PATCH",
       url: "/api/tasks/" + task.id,
       dataType: "json",
       data: { task: task },
       success: function (task) {
-        console.log("task updated successfully");
         ServerActions.receiveTask(task);
       },
       error: function (resp) {
@@ -40,14 +38,12 @@ var TaskApiUtil = {
   },
 
   createTask: function (task) {
-    console.log("sending ajax request");
     $.ajax({
       type: "POST",
       url: "/api/teams/" + task.team_id + "/tasks",
       dataType: "json",
       data: {task: task},
       success: function (task) {
-        console.log("task created");
         ServerActions.receiveCreatedTask(task);
       },
       error: function (data) {
@@ -60,7 +56,6 @@ var TaskApiUtil = {
   },
 
   getTask: function (taskId) {
-    console.log("getTask api call");
     $.ajax({
       type: "GET",
       url: "/api/tasks/" + taskId,

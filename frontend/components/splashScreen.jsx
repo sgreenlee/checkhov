@@ -75,7 +75,6 @@ var SplashScreen = React.createClass({
       var teamId = TeamStore.all()[0].id;
       next = "/teams/" + teamId;
     }
-    console.log("setting timeout");
     setTimeout(function() {
       this.context.router.push(next);
     }.bind(this), 500);
