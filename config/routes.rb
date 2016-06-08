@@ -27,4 +27,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy]
 
   end
+
+  # oauth callbacks
+  get "/auth/:provider/callback", to: "sessions#oauth"
 end

@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   validates :email,
-            :session_token,
-            :password_digest, presence: true
+            :session_token, presence: true
 
   validates :password, length: { minimum: 8, allow_nil: true }
+
+  validate :has_password_or_oauth_id
 
   after_initialize :ensure_session_token
 
@@ -23,6 +24,12 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, default_url: "missing.png", styles: { thumb: "100x100#"}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  def has_password_or_oauth_id
+    if (self.password_digest.nil? && self.google_uid.nil?)
+      errors.add("user must have either a valid password or oauth identifier")
+    end
+  end
 
   def password=(password)
     @password = password
@@ -43,6 +50,21 @@ class User < ActiveRecord::Base
     user = User.find_by(email: email)
     return user if user && user.is_password?(password)
     nil
+  end
+
+  def self.find_or_create_from_auth_hash(auth_hash)
+
+    user = User.find_by(google_uid: auth_hash[:uid])
+    if user.nil?
+      user = User.create!(
+        google_uid: auth_hash[:uid],
+        email: auth_hash[:info][:email],
+        first_name: auth_hash[:info][:first_name],
+        last_name: auth_hash[:info][:last_name],
+        avatar:  URI.parse(auth_hash[:info][:image])
+      )
+    end
+    user
   end
 
   def has_permission(team, action)

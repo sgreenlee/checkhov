@@ -54,6 +54,11 @@ var Login = React.createClass({
   <div className="modal modal-group" id="login-modal">
     <span className="modal-close x-icon" onClick={this.closeModal}></span>
     <h3>Log in</h3>
+    <button className="google-oauth"><a href="/auth/google_oauth2"><i className="fa fa-google-plus" aria-hidden="true"></i>Log in using Google</a></button>
+
+    <span className="horizontal-divider" />
+    <span className="circle-text">or</span>
+
     <form onSubmit={this.onSubmit} className="clearfix" id="login-form">
 
       <ul className="error-messages">
@@ -73,7 +78,6 @@ var Login = React.createClass({
         <input id="password" value={this.state.password} onChange={this.passwordChange}
           placeholder="password" type="password" />
 
-      <p className="input-help">Forgot your pasword?</p>
 
       <input type="submit" value="Log In" />
     </form>

@@ -49,11 +49,18 @@ var SplashScreen = React.createClass({
   },
 
   onTeamLoad: function () {
+    var user = SessionStore.getCurrentUser();
     this.teamListener && this.teamListener.remove();
     var teams = TeamStore.all();
+    if (!user.first_name || !user.last_name) {
+      // redirect to profile setup
+      this.context.router.push("/setup/profile");
+      return;
+    }
     if (teams.length === 0) {
-      // redirect to setup
-      this.context.router.push("/setup");
+      // redirect to team setup
+      this.context.router.push("/setup/team");
+      return;
     }
     else {
       this.redirectToApp();
