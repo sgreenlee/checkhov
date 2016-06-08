@@ -74,3 +74,13 @@
     border-bottom: 9px solid #898E95;
   }
 }
+
+.task-delete-button:hover {
+  color: #02ceff;
+  box-shadow: 0px 0px 1px 1px #02ceff;
+  border: 1px solid #02ceff;
+
+  a {
+    color: #02ceff;
+  }
+}

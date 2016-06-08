@@ -118,7 +118,6 @@ var TeamHome = React.createClass({
               <TeamsNav currentTeam={this.props.teamId} />
               <a className="icon-dropdown" href="javascrip:void(0)"></a>
             </nav>
-            <nav id="search"></nav>
             <AccountDropdown team={team}/>
           </header>
           {this.props.children && React.cloneElement(this.props.children, {team: this.state.team })}

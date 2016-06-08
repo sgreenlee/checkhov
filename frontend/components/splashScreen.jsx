@@ -68,7 +68,10 @@ var SplashScreen = React.createClass({
       var teamId = TeamStore.all()[0].id;
       next = "/teams/" + teamId;
     }
-    this.context.router.push(next);
+    console.log("setting timeout");
+    setTimeout(function() {
+      this.context.router.push(next);
+    }.bind(this), 500);
   },
 
 
@@ -79,8 +82,11 @@ var SplashScreen = React.createClass({
 
   render: function() {
     return (
-      <div className="splash">
-        <h1>Checkhov Splash Splash Screen</h1>
+      <div id="splash">
+        <div className="logo">
+          <h1><span className="spinner" />Checkhov</h1>
+          <h3>...loading...</h3>
+        </div>
       </div>
     );
   }

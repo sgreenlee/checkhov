@@ -1,7 +1,53 @@
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 #splash {
   position: absolute;
   bottom: 0px;
   top: 0px;
   left: 0px;
   right: 0px;
+
+  background-color: #2E3C54;
+
+  .logo {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 48px;
+    vertical-align: middle;
+  }
+
+  h3 {
+    display: block;
+    font-size: 32px;
+    color: white;
+    margin: auto;
+  }
+
+
+  .spinner::before {
+    content: '✓';
+  }
+
+  .spinner {
+    margin: 0px 15px;
+    float: left;
+    content: "";
+    display: block;
+    top: 5px;
+    color: white;
+    right: 7px;
+    height: 48px;
+    width: 48px;
+    background-color: #fc7279;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+  }
 }
