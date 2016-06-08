@@ -35,8 +35,13 @@ var TeamView = React.createClass({
   },
 
   onUpdate: function () {
-    if (TaskStore.getCurrentTeam() === parseInt(this.props.params.teamId)) {
+    var teamId = this.props.params.teamId;
+    if (TaskStore.getCurrentTeam() === parseInt(teamId)) {
       this.setState({tasks: TaskStore.all()});
+      if (TaskStore.getCreatedTaskId()) {
+        var newPath = "/teams/" + teamId + "/list/" + TaskStore.getCreatedTaskId();
+        this.context.router.push(newPath);
+      }
     }
   },
 

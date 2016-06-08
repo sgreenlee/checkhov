@@ -1,5 +1,6 @@
 #account-nav {
   position: relative;
+  z-index: 99000;
 
   .dropdown {
     position: absolute;
@@ -10,6 +11,7 @@
     background: white;
     border-radius: 3px;
     border: 1px solid #898e95;
+    opacity: 1;
 
     ul {
       list-style: none;

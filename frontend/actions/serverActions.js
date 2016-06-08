@@ -59,6 +59,13 @@ var ServerActions = {
     });
   },
 
+  receiveCreatedTask: function (task) {
+    AppDispatcher.dispatch({
+      actionType: TaskConstants.RECEIVE_CREATED_TASK,
+      task: task
+    });
+  },
+
   receiveTaskErrors: function (errors) {
     AppDispatcher.dispatch({
       actionType: TaskConstants.ERROR,

@@ -271,6 +271,7 @@ footer h4 {
   padding: 0;
   display: flex;
   justify-content: space-between;
+  z-index: 100000;
 
   nav {
     height: 30px;

@@ -48,7 +48,7 @@ var TaskApiUtil = {
       data: {task: task},
       success: function (task) {
         console.log("task created");
-        ServerActions.receiveTask(task);
+        ServerActions.receiveCreatedTask(task);
       },
       error: function (data) {
         var errors = data.responseJSON.errors;

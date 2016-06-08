@@ -47,9 +47,14 @@ var ProjectView = React.createClass({
   },
 
   onTaskUpdate: function () {
-  var projectId = parseInt(this.props.params.projectId);
-    if (TaskStore.getCurrentTeam() === parseInt(this.props.params.teamId)) {
+    var teamId = this.props.params.teamId;
+    var projectId = parseInt(this.props.params.projectId);
+    if (TaskStore.getCurrentTeam() === parseInt(teamId)) {
       this.setState({tasks: TaskStore.findByProject(projectId)});
+      if (TaskStore.getCreatedTaskId()) {
+        var newPath = "/teams/" + teamId + "/" +  projectId + "/list/" + TaskStore.getCreatedTaskId();
+        this.context.router.push(newPath);
+      }
     }
   },
 
