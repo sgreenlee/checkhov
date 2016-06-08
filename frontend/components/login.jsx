@@ -28,6 +28,12 @@ var Login = React.createClass({
     }
   },
 
+  guestLogin: function (e) {
+    e.preventDefault();
+    SessionActions.login({email: "marcher@fa.com", password: "guestpassword"});
+    this.setState({errors: []});
+  },
+
   closeModal: function() {
     this.context.router.push("/welcome");
   },
@@ -79,6 +85,7 @@ var Login = React.createClass({
           placeholder="password" type="password" />
 
 
+        <button onClick={this.guestLogin} className="login login-guest">Guest Login</button>
       <input type="submit" value="Log In" />
     </form>
   </div>
