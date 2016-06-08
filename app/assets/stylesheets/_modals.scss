@@ -12,26 +12,6 @@
   z-index: 100000;
   color: #a1a4aa;
   display: none;
-
-  .x-icon {
-    display: block;
-    color: #898e95;
-    cursor: pointer;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    padding: 15px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-
-  .x-icon::after {
-    content: "✕";
-  }
-
-  .x-icon:hover {
-    color: #02CEFF;
-  }
 }
 
 .modal.open {
@@ -51,4 +31,24 @@
 
 .modal-overlay.open {
   display: block;
+}
+
+.x-icon {
+  display: block;
+  color: #898e95;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.x-icon::after {
+  content: "✕";
+}
+
+.x-icon:hover {
+  color: #02CEFF;
 }
