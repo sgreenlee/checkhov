@@ -10,7 +10,12 @@ class Api::MembersController < ApplicationController
       @team = current_user.teams.find(params[:team_id])
       if current_user.has_permission(@team, :add_member)
         @new_member = User.find_by(email: params[:member][:email])
-        render :create
+        if @new_member
+          @membership = @team.newGuest(@new_member)
+          render :create
+        else
+          render json: {errors: ["user #{params[:member][:email]} not found"]}, status: 422
+        end
       else
         render json: {errors: ["not authorized"]}, status: 403
       end

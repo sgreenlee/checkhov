@@ -93,6 +93,10 @@ button:hover {
   box-shadow: 0 0 0 3px #d0bbff;
 }
 
+button:focus {
+  outline: none;
+}
+
 input[type="submit"] {
   cursor: pointer;
 }

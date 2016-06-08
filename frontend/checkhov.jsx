@@ -25,6 +25,7 @@ var TaskDetail = require("./components/taskDetail");
 // Stores
 var SessionStore = require("./stores/sessionStore");
 var TeamStore = require("./stores/teamStore");
+var TeamMemberStore = require("./stores/teamMemberStore");
 var ProjectStore = require("./stores/projectStore");
 var TaskStore = require("./stores/taskStore");
 var ProjectStore =require("./stores/projectStore");
@@ -81,6 +82,7 @@ window.UserApiUtil = require("./util/userApiUtil");
 window.TeamApiUtil = require("./util/teamApiUtil");
 window.TaskApiUtil = require("./util/taskApiUtil");
 window.TeamStore = TeamStore;
+window.TeamMemberStore = TeamMemberStore;
 window.TaskStore = TaskStore;
 window.ProjectStore = ProjectStore;
 window.CommentApiUtil = require("./util/commentApiUtil");

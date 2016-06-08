@@ -96,6 +96,21 @@ var ServerActions = {
     });
   },
 
+  receiveCreatedTeamMember: function (team) {
+    AppDispatcher.dispatch({
+      actionType: TeamMemberConstants.RECEIVE_CREATED_MEMBER,
+      id: team.id,
+      member: team.member
+    });
+  },
+
+  receiveTeamMemberErrors: function (errors) {
+    AppDispatcher.dispatch({
+      actionType: TeamMemberConstants.RECEIVE_MEMBER_ERRORS,
+      errors: errors
+    });
+  },
+
   receiveProject: function (project) {
     AppDispatcher.dispatch({
       actionType: ProjectConstants.RECEIVE_PROJECT,

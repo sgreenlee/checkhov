@@ -21,7 +21,11 @@ var TeamMemberApiUtil = {
       dataType: "json",
       data: { member: { email: options.email }},
       success: function(data) {
-        ServerActions.receiveTeamMember(data.team);
+        ServerActions.receiveCreatedTeamMember(data.team);
+      },
+      error: function(data) {
+        var errors = data.responseJSON.errors || [];
+        ServerActions.receiveTeamMemberErrors(errors);
       }
     });
   }

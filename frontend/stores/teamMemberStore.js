@@ -6,6 +6,7 @@ var _currentTeam = null;
 var _members = {};
 
 var _errors = [];
+var _createdMemberId = null;
 
 var TeamMemberStore = new Store(AppDispatcher);
 
@@ -15,16 +16,23 @@ function _receiveAllMembers(members) {
     _members[member.id] = member;
   });
   _errors = [];
+  _createdMemberId = null;
 }
 
 function _receiveMember(member) {
   _members[member.id] = member;
 }
 
+function _receiveCreatedMember(member) {
+  _members[member.id] = member;
+  _createdMemberId = member.id;
+}
+
 _clear = function () {
   _currentTeam = null;
   _members = {};
   _errors = [];
+  _createdMemberId = null;
 };
 
 TeamMemberStore.all = function () {
@@ -64,6 +72,18 @@ TeamMemberStore.__onDispatch = function (payload) {
         _receiveMember(payload.member);
         TeamMemberStore.__emitChange();
       }
+      break;
+
+    case (TeamMemberConstants.RECEIVE_CREATED_MEMBER):
+      if (payload.id === _currentTeam) {
+        _receiveCreatedMember(payload.member);
+        TeamMemberStore.__emitChange();
+      }
+      break;
+
+    case (TeamMemberConstants.RECEIVE_MEMBER_ERRORS):
+      _errors = payload.errors;
+      TeamMemberStore.__emitChange();
       break;
   }
 };
