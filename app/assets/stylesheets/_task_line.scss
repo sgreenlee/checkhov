@@ -32,7 +32,7 @@
   .complete-task-button.completed  {
     background-color: #3BF7D1;
     color: white;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
   }
 
   input {
@@ -50,4 +50,8 @@
     float: right;
     border-radius: 50%;
   }
+}
+
+li:hover + li > .task-line {
+  border-top: 1px solid transparent;
 }

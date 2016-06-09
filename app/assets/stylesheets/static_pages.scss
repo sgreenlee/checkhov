@@ -443,12 +443,14 @@ footer h4 {
   padding: 0px;
 
   li {
-    height: 35px;
+    position: relative;
+    height: 37px;
     width: 100%;
     font-size: 14px;
     line-height: 35px;
     padding-left: 30px;
     border-radius: 1px;
+    border: 1px solid transparent;
 
     a {
       display: block;
@@ -465,12 +467,32 @@ footer h4 {
     border: 1px solid #E0E0E0;
 
     .task-line {
-      border: none;
+      border-top: 1px solid transparent;
     }
   }
 
   li.selected::after {
-    
+    content: "";
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: -17px;
+    border-left: none;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-right: 11px solid white;
+    z-index: 3000;
+  }
+  li.selected::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    right: -17px;
+    border-left: none;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid #898E95;
   }
 }
 

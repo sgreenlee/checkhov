@@ -15,12 +15,12 @@ var TaskList = React.createClass({
     return (
       <ul className="task-list">
         {tasks.filter(filter).map(function (task){
-          var selected = this.props.selectedTask === task.id ? " selected" : "";
+          var selected = parseInt(this.props.selectedTask) === task.id ? " selected" : "";
           return (
             <li key={task.id} onClick={comp.openDetail.bind(comp, task.id)} className={"task-list-item" + selected}>
               <TaskLine task={task} seopenDetail={comp.openDetail} />
             </li>) ;
-        })}
+        }.bind(this))}
         <li className="new-task-item">
           <a href="javascript:void(0)" onClick={this.props.addTask}></a>
         </li>
