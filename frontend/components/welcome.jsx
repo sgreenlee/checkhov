@@ -22,7 +22,7 @@ var Welcome = React.createClass({
 
 <div>
   <header className="clearfix">
-    <img src="" height="55" alt=""></img>
+    <h2 className="logo-main">Checkhov</h2>
 
     <button onClick={this.openLogin} className="login">Log In</button>
     <button onClick={this.openSignup}>Get Started for FREE</button>
@@ -31,13 +31,13 @@ var Welcome = React.createClass({
 
   <section className="main">
 
-    <h1>Lorem ipsum dolor sit amet.</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quae dolore porro! Quidem, quo, sunt.</p>
+    <h1>Get more done with Checkhov.</h1>
+    <p>Plan. Collaborate. Checkhov.</p>
 
   </section>
 
   <footer>
-    <h4>I don't know what to put down here yet.</h4>
+    <small>Copyright (c) 2016 Sam Greenle All Rights Reserved.</small>
   </footer>
   {this.props.children}
 </div>
