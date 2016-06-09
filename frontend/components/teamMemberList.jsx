@@ -25,7 +25,6 @@ var TeamMemberList = React.createClass({
     if (errors.length != 0) {
       this.setState({ errors: errors });
     } else {
-      this.setState({ newMemberEmail: "", open: false });
       this.closeModal();
     }
   },
@@ -35,8 +34,7 @@ var TeamMemberList = React.createClass({
   },
 
   closeModal: function (e) {
-    // this.setState({ open: false, errors: [], newTeamName: "" });
-    this.setState({ open: false });
+    this.setState({ open: false, errors: [], newMemberEmail: "" });
   },
 
   onFormInput: function (e) {
@@ -78,7 +76,7 @@ var TeamMemberList = React.createClass({
               }
             </ul>
             <label htmlFor="new-member-email">Email Address</label>
-            <input value={this.state.newTeamName} onChange={this.onFormInput} type="text" id="new-member-email" />
+            <input value={this.state.newMemberEmail} onChange={this.onFormInput} type="text" id="new-member-email" />
             <input type="submit" value="Add Member" />
           </form>
         </div>
