@@ -2,16 +2,16 @@
 
 .assignment-setter {
 
-  float: left;
   cursor: pointer;
   color: #898E95;
   opacity: 1;
 
-  position: relative;
+  position: absolute;
+  left: 35px;
+  top: 12px;
   background: white;
 
   height: 36px;
-  margin: 12px 0px;
 
   border-radius: 18px;
   line-height: 36px;
@@ -157,9 +157,9 @@
 .assignment-setter.expanded {
   width: 230px;
   height: 42px;
-  margin: 9px 0px;
   border-radius: 3px;
-  left: -20px;
+  left: 15px;
+  top: 9px;
   border: 1px solid #898E95;
   z-index: 20;
 

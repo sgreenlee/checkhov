@@ -40,7 +40,7 @@
     border: 0px solid transparent;
     height: inherit;
     outline: none;
-    width: 400px;
+    width: calc(100% - 80px);
   }
 
   .avatar {

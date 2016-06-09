@@ -1,9 +1,10 @@
 .task-delete-button {
   cursor: pointer;
-  position: relative;
-  float: left;
-  margin: 12px;
-  margin-left: 46px;
+
+  position: absolute;
+  top: 12px;
+  left: 340px;
+
   width: 36px;
   height: 36px;
   border-radius: 50%;
