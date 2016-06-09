@@ -8,6 +8,8 @@ class Task < ActiveRecord::Base
 
   belongs_to :project
 
+  belongs_to :assignee, class_name: "User", foreign_key: :assignee_id
+
   has_many :comments, dependent: :destroy
 
 end

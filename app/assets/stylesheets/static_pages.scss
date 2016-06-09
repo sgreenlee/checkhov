@@ -446,6 +446,9 @@ footer h4 {
 .task-list {
   list-style: none;
   padding: 0px;
+  height: calc(100% - 100px);
+  overflow-y: scroll;
+
 
   li {
     position: relative;

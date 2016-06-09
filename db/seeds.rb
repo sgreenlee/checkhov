@@ -52,7 +52,7 @@ pam = User.create!(
 ray = User.create!(
   email: "rgillette@fa.com",
   first_name: "Ray",
-  last_name: "Gillete",
+  last_name: "Gillette",
   password: "dsfssdfsdfsdf",
   avatar: File.open(File.join(Rails.root, "/app/assets/images/ray.jpg"))
 )
@@ -73,6 +73,23 @@ krieger = User.create!(
   avatar: File.open(File.join(Rails.root, "/app/assets/images/krieger.jpg"))
 )
 
+ron = User.create!(
+  email: "ron@tristatecadillac.com",
+  first_name: "Ron",
+  last_name: "Cadillac",
+  password: "oisdgrereesh",
+  avatar: File.open(File.join(Rails.root, "/app/assets/images/ron.jpg"))
+)
+
+barry = User.create!(
+  email: "barry@kgb.ru",
+  first_name: "Barry",
+  last_name: "Dylan",
+  password: "yuiuykyujky",
+  avatar: File.open(File.join(Rails.root, "/app/assets/images/barry.jpg"))
+)
+
+members = [malory, sterling, lana, cyril, pam, cheryl, ray, nil, nil, nil, nil]
 
 ### Teams
 
@@ -86,3 +103,135 @@ fa.memberships.create!(user: cheryl)
 fa.memberships.create!(user: krieger)
 fa.memberships.create!(user: ray)
 fa.memberships.create!(user: cyril)
+
+
+### Projects
+
+hr = fa.projects.create!(
+  title: "Human Resources")
+marketing = fa.projects.create!(
+  title: "Marketing")
+ra = fa.projects.create!(title: "Research and development")
+
+fa_tasks = (0..6).map do
+  fa.tasks.create!(
+    title: Faker::Company.bs,
+    description: Faker::Company.catch_phrase,
+    due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+    assignee: members.sample
+  )
+end
+
+ra_tasks =[
+  fa.tasks.create!(
+    title: "Perform Burial for Piggly II",
+    project: ra,
+    due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+    assignee: krieger,
+    completed: (Random.rand * 1.5 > 1)
+  ),
+  fa.tasks.create!(
+    title: "Revisit phase I of Human Ant Strength",
+    project: ra,
+    due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+    assignee: krieger,
+    completed: (Random.rand * 1.5 > 1)
+  ),
+  fa.tasks.create!(
+    title: "Improve AI for holographic companion",
+    project: ra,
+    due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+    assignee: krieger,
+    completed: (Random.rand * 1.5 > 1)
+  ),
+  fa.tasks.create!(
+    title: "Steal DNA samples from coworkers",
+    project: ra,
+    due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+    assignee: krieger,
+    completed: (Random.rand * 1.5 > 1)
+  ),
+  fa.tasks.create!(
+    title: "Dump chemical waste in the Hudson",
+    project: ra,
+    due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+    assignee: krieger,
+    completed: (Random.rand * 1.5 > 1)
+  ),
+]
+
+marketing_tasks = [
+    fa.tasks.create!(
+      title: "Enable extensible networks",
+      project: marketing,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "Architect one-to-one infomediaries",
+      project: marketing,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "Synergize integrated technologies",
+      project: marketing,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "Synthesize global initiatives",
+      project: marketing,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "Grow distributed action-items",
+      project: marketing,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+]
+
+hr_tasks = [
+    fa.tasks.create!(
+      title: "Organize Company Picnic",
+      project: hr,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "Conduct Annual Performance Reviews",
+      project: hr,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "Onboard new hires",
+      project: hr,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "June Issue of company newsletter",
+      project: hr,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+    fa.tasks.create!(
+      title: "Enable extensible networks",
+      project: hr,
+      due_date: Faker::Date.between(1.day.ago, 14.days.from_now),
+      assignee: members.sample,
+      completed: (Random.rand * 1.5 > 1)
+    ),
+]
