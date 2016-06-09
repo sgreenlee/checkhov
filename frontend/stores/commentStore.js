@@ -1,6 +1,7 @@
 var Store = require("flux/utils").Store;
 var AppDispatcher = require("../dispatcher/dispatcher");
 var CommentConstants = require("../constants/commentConstants");
+var SessionConstants = require("../constants/sessionConstants");
 
 var _comments = {};
 var _currentTeam = null;
@@ -26,6 +27,12 @@ function _receiveComment(comment) {
   _errors = [];
 }
 
+function _clear() {
+  _comments = {};
+  _currentTeam = null;
+  _errors = [];
+}
+
 function _setErrors(errors) {
   _errors = errors;
 }
@@ -43,6 +50,11 @@ CommentStore.findByTask = function (taskId) {
 
 CommentStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
+
+    case (SessionConstants.LOGOUT):
+      _clear();
+      break;
+
     case CommentConstants.RECEIVE_ALL_COMMENTS:
       _receiveAllComments(payload.comments);
       CommentStore.__emitChange();

@@ -2,6 +2,7 @@ var Store = require("flux/utils").Store;
 var AppDispatcher = require("../dispatcher/dispatcher");
 var TaskConstants = require("../constants/taskConstants");
 var CommentConstants = require("../constants/commentConstants");
+var SessionConstants = require("../constants/sessionConstants");
 
 var _tasks = {};
 var _currentTeam = null;
@@ -17,6 +18,13 @@ function _receiveAllTasks(team_id, tasks) {
     _tasks[task.id] = task;
   });
   _errors = [];
+}
+
+function _clear() {
+  _tasks = {};
+  _currentTeam = null;
+  _errors = [];
+  _createdTaskId = null;
 }
 
 function _receiveTask(task) {
@@ -54,6 +62,11 @@ TaskStore.getCreatedTaskId = function () {
 
 TaskStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
+
+    case (SessionConstants.LOGOUT):
+      _clear();
+      break;
+
     case TaskConstants.RECEIVE_ALL_TASKS:
       _receiveAllTasks(payload.teamId, payload.tasks);
       _createdTaskId = null;

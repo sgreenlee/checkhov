@@ -1,6 +1,7 @@
 var Store = require("flux/utils").Store;
 var AppDispatcher = require("../dispatcher/dispatcher");
 var TeamMemberConstants = require("../constants/teamMemberConstants");
+var SessionConstants = require("../constants/sessionConstants");
 
 var _currentTeam = null;
 var _members = {};
@@ -61,6 +62,11 @@ TeamMemberStore.search = function (text) {
 
 TeamMemberStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
+
+    case (SessionConstants.LOGOUT):
+      _clear();
+      break;
+
     case (TeamMemberConstants.RECEIVE_ALL_MEMBERS):
       _currentTeam = payload.id;
       _receiveAllMembers(payload.members);

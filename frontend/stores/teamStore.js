@@ -1,6 +1,7 @@
 var Store = require("flux/utils").Store;
 var AppDispatcher = require("../dispatcher/dispatcher");
 var TeamConstants = require("../constants/teamConstants");
+var SessionConstants = require("../constants/sessionConstants");
 var Permissions = require("../util/permissions");
 
 var _teams = {};
@@ -25,6 +26,12 @@ function _receiveTeam(team) {
 
 function _setErrors(errors) {
   _errors = errors;
+  _lastReceivedTeam = null;
+}
+
+function _clear() {
+  _teams = {};
+  _errors = [];
   _lastReceivedTeam = null;
 }
 
@@ -57,6 +64,10 @@ TeamStore.hasPermission = function (teamId, action) {
 
 TeamStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
+
+    case (SessionConstants.LOGOUT):
+      _clear();
+      break;
 
     case (TeamConstants.RECEIVE_ALL_TEAMS):
       _createdTeamId = null;

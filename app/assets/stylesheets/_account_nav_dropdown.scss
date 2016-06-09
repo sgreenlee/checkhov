@@ -4,9 +4,9 @@
 
   .dropdown {
     position: absolute;
-    top: 100%;
-    right: 50px;
-    width: 105px;
+    top: calc(100% + 10px);
+    right: calc(50% - 52px);
+    width: 104px;
     z-index: 5000;
     background: white;
     border-radius: 3px;
