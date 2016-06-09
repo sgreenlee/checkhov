@@ -22,11 +22,13 @@ function _receiveAllMembers(members) {
 
 function _receiveMember(member) {
   _members[member.id] = member;
+  _errors = [];
 }
 
 function _receiveCreatedMember(member) {
   _members[member.id] = member;
   _createdMemberId = member.id;
+  _errors = [];
 }
 
 _clear = function () {

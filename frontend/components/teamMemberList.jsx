@@ -26,6 +26,7 @@ var TeamMemberList = React.createClass({
       this.setState({ errors: errors });
     } else {
       this.setState({ newMemberEmail: "", open: false });
+      this.closeModal();
     }
   },
 
