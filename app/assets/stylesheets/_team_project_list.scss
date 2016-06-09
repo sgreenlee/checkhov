@@ -1,14 +1,23 @@
 .project-list-component {
+  background-color: inherit;
   padding: 0px 0px;
   margin-top: 40px;
+  height: 350px;
+  overflow-y: scroll;
 
 
 
   .project-list {
+    background-color: inherit;
+    position: relative;
     color: #C1CCD1;
+    padding-top: 40px;
 
     .header {
-      position: relative;
+      position: fixed;
+      transform: translateY(-100%);
+      width: 240px;
+      background-color: inherit;
     }
 
     h6 {

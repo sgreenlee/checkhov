@@ -1,13 +1,21 @@
 .member-list-component {
+  background-color: inherit;
   margin-top: 100px;
+  height: 350px;
+  overflow-y: scroll;
   padding: 0px 0px;
 
-
   .member-list {
+    background-color: inherit;
     color: #C1CCD1;
+    position: relative;
+    padding-top: 40px;
 
     .header {
-      position: relative;
+      position: fixed;
+      transform: translateY(-100%);
+      width: 240px;
+      background-color: inherit;
     }
 
     h6 {

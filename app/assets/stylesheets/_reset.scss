@@ -19,3 +19,7 @@ input, textarea, div {
 a {
   cursor: pointer;
 }
+
+*::-webkit-scrollbar {
+  background: transparent;
+}
