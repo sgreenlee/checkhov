@@ -44,7 +44,7 @@ var AccountDropdown = React.createClass({
     var dropdown = (
       <div className="dropdown">
         <ul>
-          <li><a onClick={this.logOut}>Log Out</a></li>
+          <li><button onClick={this.logOut}>Log Out</button></li>
         </ul>
       </div>
     );

@@ -86,6 +86,7 @@ var ProjectView = React.createClass({
 
   render: function() {
     var project = this.state.project || {};
+    var selectedTask = this.props.params.taskId
     return (
     <div className="project-view">
       <header id="project-header">
@@ -113,7 +114,8 @@ var ProjectView = React.createClass({
           filter={TASK_FILTERS[this.state.filter]}
           tasks={this.state.tasks}
           openDetail={this.openDetail}
-          addTask={this.addTask}/>
+          addTask={this.addTask}
+          selectedTask={selectedTask} />
         </section>
         {this.props.children}
       </section>

@@ -4,9 +4,9 @@
 
   .dropdown {
     position: absolute;
-    top: calc(100% + 5px);
-    right: 10px;
-    width: 150px;
+    top: 100%;
+    right: 50px;
+    width: 105px;
     z-index: 5000;
     background: white;
     border-radius: 3px;
@@ -16,11 +16,12 @@
     ul {
       list-style: none;
       margin: 0;
+      padding: 0px;
 
-      a {
-        font-weight: bold;
-        cursor: pointer;
-        padding: 10px;
+      button {
+        float: none;
+        display: block;
+        margin: 10px auto;
       }
     }
   }
@@ -55,5 +56,36 @@
 
   a:hover > .user-avatar {
     border: 2px solid #02ceff;
+  }
+
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: -8px;
+    left: calc(50% - 8px);
+    opacity: 1;
+    border-top: none;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+    z-index: 1000000;
+  }
+  .dropdown::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: -9px;
+    left: calc(50% - 9px);
+    opacity: 1;
+    border-top: none;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #898e95;
+    z-index: 1000000;
   }
 }
