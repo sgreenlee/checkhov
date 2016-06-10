@@ -1,19 +1,16 @@
 .member-list-component {
   background-color: inherit;
   margin-top: 60px;
-  height: 35%;
-  overflow-y: scroll;
+  height: 30%;
   padding: 0px 0px;
 
   .member-list {
     background-color: inherit;
     color: #C1CCD1;
     position: relative;
-    padding-top: 40px;
 
     .header {
-      position: fixed;
-      transform: translateY(-100%);
+      position: relative;
       width: 240px;
       background-color: inherit;
     }
@@ -52,46 +49,62 @@
       list-style: none;
       font-size: 14px;
       margin: 0;
-      padding: 0;
+      padding: 0 0  0 15px;
+      display: flex;
+      flex-wrap: wrap;
 
-      .member-list-item {
+      li {
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        margin: 4px;
+        position: relative;
 
-        .avatar {
-          margin: 5px;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          float: left;
-        }
+      }
 
-        .member-info {
-          float: left;
-          padding-left: 10px;
-        }
+      img {
+        cursor: help;
+        display: block;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        padding: 0px;
+      }
 
-        .name {
-          line-height: 40px;
-          height: 40px;
-          font-size: 15px;
-          text-transform: capitalize;
-        }
+      li:hover:after {
+        content: attr(name);
+        display: block;
+        width: 60px;
+        padding: 10px;
+        position: absolute;
+        top: calc(100% + 6px);
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #201930;
+        border-radius: 4px;
+        z-index: 15;
+        color: white;
+        opacity: .9;
+      }
 
-        .email {
-          display: none;
-        }
+      li:hover:before {
+        content: "";
+        border-top: none;
+        border-right: 8px solid  transparent;
+        border-left: 8px solid  transparent;
+        border-bottom: 6px solid  #201930;
+        display: block;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 16;
+        opacity: .9;
       }
     }
-
-    li {
-      padding: 0 20px;
-      line-height: 30px;
-      vertical-align: middle;
-    }
-
-    li:hover {
-      background: #179DBA;
-    }
-
   }
 
   .modal {

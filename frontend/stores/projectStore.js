@@ -57,6 +57,10 @@ ProjectStore.getLastReceivedProject = function () {
   return _lastReceivedProjectId;
 };
 
+ProjectStore.getErrors = function () {
+  return _errors;
+};
+
 ProjectStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
 
@@ -67,6 +71,12 @@ ProjectStore.__onDispatch = function (payload) {
     case ProjectConstants.RECEIVE_ALL_PROJECTS:
       _lastReceivedProjectId = null;
       _receiveAllProjects(payload.teamId, payload.projects);
+      ProjectStore.__emitChange();
+      break;
+
+    case ProjectConstants.RECEIVE_PROJECT_ERRORS:
+      _lastReceivedProjectId = null;
+      _setErrors(payload.errors);
       ProjectStore.__emitChange();
       break;
 

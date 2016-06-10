@@ -56,9 +56,12 @@ var TeamMemberList = React.createClass({
             <h6>Team Members</h6>
             <a onClick={this.openModal} className="plus-icon" />
           </div>
-          <ul>
+          <ul className="team-member-grid">
             { this.props.members && this.props.members.map(function (member) {
-              return (<MemberListItem key={member.id} member={member} />);
+
+                return <li name={member.first_name + " " + member.last_name}><img src={member.avatar_url}/></li>;
+
+              // return (<MemberListItem key={member.id} member={member} />);
             })}
           </ul>
         </div>

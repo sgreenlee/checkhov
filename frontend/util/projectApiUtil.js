@@ -13,7 +13,7 @@ var ProjectApiUtil = {
       error: function (data) {
         var errors = data.responseJSON.errors;
         if (errors) {
-          ServerActions.receiveTaskErrors(errors);
+          ServerActions.receiveProjectErrors(errors);
         }
       }
     });

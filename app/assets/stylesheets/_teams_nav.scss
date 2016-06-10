@@ -5,10 +5,12 @@
   float: left;
 
   .dropdown {
-    width: 200px;
+    width: 150px;
     list-style: none;
     border-radius: 3px;
     position: absolute;
+    left: 50%;
+    transform: translate(-50%, 5px);
     display: none;
     background: white;
     border: 1px solid black;
@@ -20,9 +22,39 @@
       a {
         display: block;
         font-size: 13px;
-        padding: 5px 10px;
+        padding: 15px;
       }
     }
+  }
+
+  .dropdown:after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0px;
+    height: 0px;
+    border-top: none;
+    z-index: 10;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid black;
+  }
+
+  .dropdown:before {
+    content: "";
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    z-index: 11;
+    transform: translateX(-50%);
+    width: 0px;
+    height: 0px;
+    border-top: none;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    border-bottom: 11px solid white;
   }
 
   .dropdown.visible {

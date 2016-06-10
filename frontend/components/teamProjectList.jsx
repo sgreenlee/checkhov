@@ -1,5 +1,6 @@
 var React = require("react");
 var ProjectActions = require("../actions/projectActions");
+var ProjectStore = require("../stores/projectStore");
 
 var TeamProjectList = React.createClass({
   contextTypes: {
@@ -7,7 +8,21 @@ var TeamProjectList = React.createClass({
   },
 
   getInitialState: function () {
-    return {newTeamName: ""};
+    return {newTeamName: "", errors: []};
+  },
+
+  componentDidMount: function () {
+    this.listener = ProjectStore.addListener(this.onResponse);
+  },
+
+
+  onResponse: function () {
+    var errors = ProjectStore.getErrors();
+    if (errors.length != 0) {
+      this.setState({ errors: errors });
+    } else {
+      this.closeModal();
+    }
   },
 
   openModal: function () {
@@ -25,7 +40,6 @@ var TeamProjectList = React.createClass({
   onSubmit: function (e) {
     e.preventDefault();
     ProjectActions.createProject({title: this.state.newTeamName, team_id: this.props.teamId });
-    this.closeModal();
     this.setState({ newTeamName: "" });
   },
 
@@ -53,6 +67,13 @@ var TeamProjectList = React.createClass({
           <h4>New Project</h4>
           <a className="x-icon close-modal" onClick={this.closeModal} />
           <form onSubmit={this.onSubmit} className="clearfix">
+            <ul className="error-messages">
+              {
+                (this.state.errors).map(function (error) {
+                  return <li>{error}</li>;
+                })
+              }
+            </ul>
             <label htmlFor="project-name">Project Name</label>
             <input value={this.state.newTeamName} onChange={this.onFormInput} type="text" id="project-name" />
             <input type="submit" value="Create Project" />

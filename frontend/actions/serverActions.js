@@ -132,6 +132,14 @@ var ServerActions = {
     });
   },
 
+  receiveProjectErrors: function (errors) {
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.RECEIVE_PROJECT_ERRORS,
+      errors: errors
+    });
+  },
+
+
   receiveAllProjects: function (team) {
     AppDispatcher.dispatch({
       actionType: ProjectConstants.RECEIVE_ALL_PROJECTS,
