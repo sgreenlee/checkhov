@@ -1,4 +1,5 @@
 # Checkhov
+![Checkhov User Interface](./docs/screencap.png)
 
 [Checkhov live][heroku]
 
