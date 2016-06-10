@@ -11,11 +11,9 @@
     background-color: inherit;
     position: relative;
     color: #C1CCD1;
-    padding-top: 40px;
 
     .header {
-      position: fixed;
-      transform: translateY(-100%);
+      position: relative;
       width: 240px;
       background-color: inherit;
     }

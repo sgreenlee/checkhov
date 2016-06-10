@@ -13,6 +13,7 @@
     transform: translate(-50%, 5px);
     display: none;
     background: white;
+    z-index: 10000;
     border: 1px solid black;
     margin: 0;
     padding: 0;
@@ -36,7 +37,7 @@
     width: 0px;
     height: 0px;
     border-top: none;
-    z-index: 10;
+    z-index: 10001;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
     border-bottom: 12px solid black;
@@ -47,7 +48,7 @@
     position: absolute;
     top: -11px;
     left: 50%;
-    z-index: 11;
+    z-index: 11000;
     transform: translateX(-50%);
     width: 0px;
     height: 0px;
