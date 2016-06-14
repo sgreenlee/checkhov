@@ -22,10 +22,6 @@ var Signup = React.createClass({
 
   onResponse: function () {
     this.setState({errors: SessionStore.errors() });
-    if (this.state.errors.length === 0) {
-      // login successful
-      this.context.router.push("/setup");
-    }
   },
 
   closeModal: function() {

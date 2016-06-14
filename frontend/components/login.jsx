@@ -22,16 +22,10 @@ var Login = React.createClass({
 
   onResponse: function () {
     this.setState({errors: SessionStore.errors() });
-    if (this.state.errors.length === 0) {
-      // login successful
-      this.context.router.push("/");
-    }
-  },
-
-  guestLogin: function (e) {
-    e.preventDefault();
-    SessionActions.login({email: "marcher@fa.com", password: "guestpassword"});
-    this.setState({errors: []});
+    // if (this.state.errors.length === 0) {
+    //   // login successful
+    //   this.context.router.push("/");
+    // }
   },
 
   closeModal: function() {
@@ -84,8 +78,6 @@ var Login = React.createClass({
         <input id="password" value={this.state.password} onChange={this.passwordChange}
           placeholder="password" type="password" />
 
-
-        <button onClick={this.guestLogin} className="login login-guest">Guest Login</button>
       <input type="submit" value="Log In" />
     </form>
   </div>
