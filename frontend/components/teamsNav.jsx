@@ -39,7 +39,6 @@ var TeamsNav = React.createClass({
   },
 
   switchTeam: function (id) {
-    debugger
     this.setState({ expanded: false });
     this.context.router.push("/teams/" + id);
   },

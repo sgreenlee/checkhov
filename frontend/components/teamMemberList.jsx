@@ -59,7 +59,7 @@ var TeamMemberList = React.createClass({
           <ul className="team-member-grid">
             { this.props.members && this.props.members.map(function (member) {
 
-                return <li name={member.first_name + " " + member.last_name}><img src={member.avatar_url}/></li>;
+                return <li key={member.id} name={member.first_name + " " + member.last_name}><img src={member.avatar_url}/></li>;
 
               // return (<MemberListItem key={member.id} member={member} />);
             })}
