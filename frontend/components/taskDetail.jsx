@@ -85,10 +85,12 @@ var TaskDetail = React.createClass({
           <TaskDueDateSetter task={task}/>
           { canDelete ? <TaskDeleteButton task={task} /> : "" }
         </div>
-        <div className="project-info"></div>
-        <TaskLine task={task} />
-        <TaskDescription task={task} />
-        <CommentIndex task={task} comments={this.state.comments} />
+        <div className="task-detail-content">
+          <div className="project-info"></div>
+          <TaskLine task={task} />
+          <TaskDescription task={task} />
+          <CommentIndex task={task} comments={this.state.comments} />
+        </div>
         <CommentForm  task={task}/>
       </section>
     );

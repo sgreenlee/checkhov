@@ -14,6 +14,13 @@
     height: 40px;
   }
 
+  .task-detail-content {
+    margin: 0;
+    padding: 0px;
+    height: calc(100% - 55px);
+    overflow-y: scroll;
+  }
+
   .task-line {
     height: 40px;
     margin: 5px 30px;
