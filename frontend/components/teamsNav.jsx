@@ -2,6 +2,9 @@ var React = require("react");
 var TeamStore = require("../stores/teamStore");
 
 var TeamsNav = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
 
   getInitialState: function() {
     return {teams: TeamStore.all(), expanded: false};
@@ -22,15 +25,23 @@ var TeamsNav = React.createClass({
   },
 
   pageClick: function (e) {
-    if (this.DOMNode.contains(e.target)) {
-      this.setState({expanded: true});
-    } else {
+    if (!this.DOMNode.contains(e.target)) {
       this.setState({expanded: false });
     }
   },
 
+  openDropdown: function (e) {
+    this.setState({expanded: true});
+  },
+
   getDOMNode: function (node) {
     this.DOMNode = node;
+  },
+
+  switchTeam: function (id) {
+    debugger
+    this.setState({ expanded: false });
+    this.context.router.push("/teams/" + id);
   },
 
   render: function() {
@@ -40,11 +51,11 @@ var TeamsNav = React.createClass({
 
     return (
       <div className="teams-nav" ref={this.getDOMNode}>
-        <a href="javascrip:void(0)">My Teams</a>
+        <a href="javascrip:void(0)" onClick={this.openDropdown}>My Teams</a>
         <ul className={"dropdown " + visible}>
           { teams.map(function (team) {
             if (team.id !== parseInt(this.props.currentTeam)) {
-              return <li key={team.id}><a href={"#/teams/" + team.id}>{team.name}</a></li>;
+              return <li key={team.id}><a onClick={this.switchTeam.bind(this, team.id)}>{team.name}</a></li>;
             } else {
               return <li key={team.id} className="active">{team.name}</li>;
             }
