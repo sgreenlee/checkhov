@@ -58,7 +58,7 @@ var Welcome = React.createClass({
   </section>
 
   <footer>
-    <small>Copyright (c) 2016 Sam Greenle All Rights Reserved.</small>
+    <small>Copyright (c) 2016 Sam Greenlee All Rights Reserved.</small>
   </footer>
   {this.props.children}
 </div>
