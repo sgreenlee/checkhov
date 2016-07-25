@@ -75,14 +75,3 @@ document.addEventListener("DOMContentLoaded", function() {
     <Router history={hashHistory}>{ routes }</Router>,
     document.getElementById("app-root"));
 });
-
-window.SessionApiUtil = require("./util/sessionApiUtil");
-window.SessionStore = SessionStore;
-window.UserApiUtil = require("./util/userApiUtil");
-window.TeamApiUtil = require("./util/teamApiUtil");
-window.TaskApiUtil = require("./util/taskApiUtil");
-window.TeamStore = TeamStore;
-window.TeamMemberStore = TeamMemberStore;
-window.TaskStore = TaskStore;
-window.ProjectStore = ProjectStore;
-window.CommentApiUtil = require("./util/commentApiUtil");
